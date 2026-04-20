@@ -1,21 +1,25 @@
+import { Counter } from "@/components/Counter";
+import { Devices } from "@/components/Devices";
+import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/Hero";
+import { Introduction } from "@/components/Introduction";
+import { Navigation } from "@/components/Navigation";
+import { Showcase } from "@/components/Showcase";
+import { SignupBanner } from "@/components/SignupBanner";
+import { Statement } from "@/components/Statement";
+
 export default function Home() {
   return (
-    <main
-      style={{
-        minHeight: "100dvh",
-        display: "grid",
-        placeItems: "center",
-        fontFamily: "system-ui, sans-serif",
-        padding: "2rem",
-      }}
-    >
-      <div style={{ maxWidth: "40ch", textAlign: "center" }}>
-        <h1>AICareer v2 Landing — scaffold</h1>
-        <p>
-          Empty baseline. Run <code>/clone-website</code> in Claude Code to start
-          the port of ellipsus.com.
-        </p>
-      </div>
+    <main>
+      <Navigation />
+      <Hero />
+      <Devices />
+      <Introduction />
+      <Showcase />
+      <Statement />
+      <Counter />
+      <SignupBanner />
+      <Footer />
     </main>
   );
 }
