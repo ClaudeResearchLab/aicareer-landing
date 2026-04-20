@@ -92,12 +92,12 @@ export function Footer() {
             >
               <div className="mb-5 font-display text-[28px] font-light leading-[1.2] text-surface-light md:text-[40px] md:leading-[48px]">
                 <p className="m-0">
-                  &ldquo;More than any other single invention, writing has transformed human
-                  consciousness.&rdquo;
+                  &ldquo;Your work is going to fill a large part of your life. The only way
+                  to be truly satisfied is to do what you believe is great work.&rdquo;
                 </p>
               </div>
               <span className="font-body text-[20px] font-normal text-surface-light md:text-right">
-                Walter J. Ong
+                Steve Jobs
               </span>
             </div>
 
@@ -119,7 +119,7 @@ export function Footer() {
                 ))}
               </ul>
               <span className="block w-[160px] font-body text-[14px] leading-[19px] text-surface-light">
-                Jägerstraße 54-55 10117 Berlin Germany
+                123 Career Way San Francisco, CA 94103
               </span>
             </div>
           </div>

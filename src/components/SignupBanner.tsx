@@ -16,7 +16,7 @@ export function SignupBanner() {
             className={clsx("reveal", text.isVisible && "is-visible")}
           >
             <h3 className="m-0 mb-6 font-display text-[40px] font-light leading-[1.2] text-surface-light md:max-w-[50%] md:text-[64px] md:leading-[77px]">
-              Get started&ndash;write away.
+              Get started&mdash;your way.
             </h3>
             <a
               href="https://account.ellipsus.com/sign-up"

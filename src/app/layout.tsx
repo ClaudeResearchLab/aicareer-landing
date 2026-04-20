@@ -55,9 +55,9 @@ const manrope = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ellipsus.com"),
-  title: "Ellipsus | Collaborative writing software",
+  title: "AICareer | Your AI career copilot",
   description:
-    "Write, edit, and collaborate on any device. Ellipsus is a principled alternative to Google Docs—built for writers, by writers. Sign up for free.",
+    "Plan moves, prep for interviews, and land offers on any device. AICareer is a principled alternative to generic job boards—built by careerists, for careerists. Sign up for free.",
   icons: {
     icon: [
       { url: "/seo/favicon.ico", sizes: "any" },
@@ -73,17 +73,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://ellipsus.com/",
-    title: "Ellipsus | Collaborative writing software",
+    title: "AICareer | Your AI career copilot",
     description:
-      "Write, edit, and collaborate on any device. Ellipsus is a principled alternative to Google Docs—built for writers, by writers. Sign up for free.",
+      "Plan moves, prep for interviews, and land offers on any device. AICareer is a principled alternative to generic job boards—built by careerists, for careerists. Sign up for free.",
     images: [{ url: "/seo/og-image.jpg" }],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@ellipsus_write",
-    title: "Ellipsus | Collaborative writing software",
+    site: "@aicareer",
+    title: "AICareer | Your AI career copilot",
     description:
-      "Write, edit, and collaborate on any device. Ellipsus is a principled alternative to Google Docs—built for writers, by writers. Sign up for free.",
+      "Plan moves, prep for interviews, and land offers on any device. AICareer is a principled alternative to generic job boards—built by careerists, for careerists. Sign up for free.",
     images: ["/seo/og-image.jpg"],
   },
   alternates: {

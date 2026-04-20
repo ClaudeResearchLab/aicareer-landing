@@ -26,11 +26,11 @@ export function Hero() {
       <div className="relative w-full px-6 md:px-20">
         <div className="mx-auto flex w-full max-w-[1312px] flex-col items-center">
           <h1 className="hero-title m-0 mb-[50px] text-center font-display text-[56px] font-light leading-[1.05] text-surface-light md:text-[96px]">
-            Write like a human.
+            Careers are a craft.
           </h1>
 
           <p className="m-0 mb-10 max-w-[420px] text-center font-body text-xl font-normal text-surface-light md:text-2xl">
-            Ellipsus is a collaborative writing tool made for creativity.
+            AICareer is an AI copilot built for real careerists.
           </p>
 
           <a

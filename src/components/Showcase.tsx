@@ -14,19 +14,19 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    caption: "Stay in control with connected drafts",
+    caption: "Stay in control with a personal growth plan",
     webm: "/videos/showcase-1-connected-drafts.webm",
     mp4: "/videos/showcase-1-connected-drafts.mp4",
     poster: "/images/showcase/poster-1-connected-drafts.png",
   },
   {
-    caption: "Keep feedback focused with comments + drafts",
+    caption: "Nail interviews with AI-powered prep",
     webm: "/videos/showcase-2-comments-drafts.webm",
     mp4: "/videos/showcase-2-comments-drafts.mp4",
     poster: "/images/showcase/poster-2-comments-drafts.png",
   },
   {
-    caption: "Write, draft, merge, repeat",
+    caption: "Apply, refine, land, repeat",
     webm: "/videos/showcase-3-merge.webm",
     mp4: "/videos/showcase-3-merge.mp4",
     poster: "/images/showcase/poster-3-merge.png",
@@ -34,9 +34,9 @@ const SLIDES: Slide[] = [
 ];
 
 const AVATARS = [
-  { src: "/images/avatars/mary-shelley.png", alt: "Mary Shelley's avatar" },
-  { src: "/images/avatars/p.png", alt: "P's avatar" },
-  { src: "/images/avatars/lord-byron.png", alt: "Lord Byron's avatar" },
+  { src: "/images/avatars/mary-shelley.png", alt: "Avatar of a careerist named Alex" },
+  { src: "/images/avatars/p.png", alt: "Avatar of a careerist named Priya" },
+  { src: "/images/avatars/lord-byron.png", alt: "Avatar of a careerist named Jordan" },
 ];
 
 const SLIDE_W = 809.45;
@@ -112,7 +112,7 @@ export function Showcase() {
                 className="hidden h-[29px] w-[73px] md:block"
               />
               <p className="font-body text-[20px] text-surface-light">
-                That&apos;s us, collaborating!
+                That&apos;s us, building careers!
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@ export function Showcase() {
                   title.isVisible && "is-visible",
                 )}
               >
-                One place for drafts, edits, and discussions
+                One place for plans, prep, and applications
               </h2>
 
               <p
@@ -157,10 +157,10 @@ export function Showcase() {
                 )}
                 style={{ "--reveal-delay": "150ms" } as React.CSSProperties}
               >
-                Your bespoke Docs-to-Discord-to-DM-to-Docs-to-??? process
-                isn&rsquo;t polishing that prose any faster. (And to be honest,
-                it sounds pretty stressful.) Streamline the way you write,
-                edit, and manage feedback with Ellipsus.
+                Your bespoke LinkedIn-to-Notion-to-DMs-to-Sheets-to-??? process
+                isn&rsquo;t landing that offer any faster. (And to be honest,
+                it sounds pretty stressful.) Streamline the way you plan, prep,
+                and apply with AICareer.
               </p>
 
               <span

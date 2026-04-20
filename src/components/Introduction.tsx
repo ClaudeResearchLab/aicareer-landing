@@ -6,9 +6,9 @@ import { useRotatingWord } from "@/hooks/useRotatingWord";
 import type { RotatingWord } from "@/types/homepage";
 
 const ROTATING_WORDS: RotatingWord[] = [
-  { word: "creative", color: "#2173BE" },
-  { word: "fan", color: "#529A6A" },
-  { word: "disorganized", color: "#C455EB" },
+  { word: "ambitious", color: "#2173BE" },
+  { word: "dedicated", color: "#529A6A" },
+  { word: "restless", color: "#C455EB" },
   { word: "aspiring", color: "#EB5B55" },
   { word: "passionate", color: "#F09236" },
 ];
@@ -137,7 +137,7 @@ export function Introduction() {
                 >
                   {current.word}
                 </span>{" "}
-                <span className="inline-block">writers</span>
+                <span className="inline-block">careerists</span>
               </p>
             </Reveal>
           </div>
@@ -172,7 +172,7 @@ export function Introduction() {
             <Reveal delay="0ms" className="relative w-full">
               <div className="max-w-[900px] font-display text-[40px] font-light leading-[1.22] md:text-[60px]">
                 <p className="m-0">
-                  Plenty of tools are made for memos, notes, and to-do lists.{" "}
+                  Plenty of tools are made for resumes, networking, and job boards.{" "}
                   <strong
                     className="font-medium"
                     style={{
@@ -191,7 +191,7 @@ export function Introduction() {
             <Reveal delay="0ms" className="relative w-full">
               <div className="max-w-[900px] font-display text-[40px] font-light leading-[1.22] md:text-[60px]">
                 <p className="m-0">
-                  Ellipsus is here to help you build worlds, wrench hearts, raise eyebrows, and{" "}
+                  AICareer is here to help you plan moves, nail interviews, own negotiations, and{" "}
                   <span
                     style={{
                       textDecoration: "none",
@@ -201,7 +201,7 @@ export function Introduction() {
                       backgroundRepeat: "no-repeat",
                     }}
                   >
-                    celebrate creativity
+                    grow the craft
                   </span>{" "}
                   in
                   <strong

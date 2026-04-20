@@ -31,11 +31,11 @@ const ENTRIES: Entry[] = [
     ],
     previewImage: {
       src: "/images/nav/sub-card-1.png",
-      alt: "Preview of the Ellipsus features page",
+      alt: "Preview of the AICareer features page",
     },
   },
   {
-    label: "Library",
+    label: "Resources",
     href: "https://help.ellipsus.com/",
     external: true,
     subItems: [
@@ -45,7 +45,7 @@ const ENTRIES: Entry[] = [
     ],
     previewImage: {
       src: "/images/nav/sub-card-4.png",
-      alt: "Preview of the Ellipsus library",
+      alt: "Preview of the AICareer resources page",
     },
   },
   {
@@ -57,7 +57,7 @@ const ENTRIES: Entry[] = [
     ],
     previewImage: {
       src: "/images/nav/sub-card-7.png",
-      alt: "Preview of the Ellipsus about page",
+      alt: "Preview of the AICareer about page",
     },
   },
 ];
@@ -97,7 +97,7 @@ export function Navigation() {
     <nav className="sticky top-0 z-[200] h-[64px] md:h-[74px] bg-surface-primary flex items-center justify-between px-6 md:px-16">
       <NavLink href="/" className="flex items-center text-content-primary">
         <EllipsusLogo className="h-7 md:h-[33px] w-auto" />
-        <span className="sr-only">Ellipsus</span>
+        <span className="sr-only">AICareer</span>
       </NavLink>
 
       <ul className="hidden md:flex mx-10 gap-10 h-[58px]">
