@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/*
+ * Ellipsus port — design tokens.
+ * Phase 1 reconnaissance populates the @theme block below with the real values
+ * extracted from https://ellipsus.com/ via chrome-devtools-mcp.
+ * See docs/research/PAGE_TOPOLOGY.md and docs/research/BEHAVIORS.md.
+ */
+
+@theme {
+  /* Populated during Phase 1 — placeholders only */
+  /* --color-brand-bg: #ffffff; */
+  /* --color-brand-fg: #000000; */
+  /* --font-brand-body: "SomeFont", system-ui, sans-serif; */
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    margin: 0;
+  }
+}

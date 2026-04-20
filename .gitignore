@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+tsconfig.tsbuildinfo
+
+# Build
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Env
+.env
+.env*.local
+
+# Playwright MCP
+.playwright-mcp/
+
+# Claude internal — ignore everything under .claude/ EXCEPT committed skills
+.claude/*
+!.claude/skills/
+.claude/settings.local.json
