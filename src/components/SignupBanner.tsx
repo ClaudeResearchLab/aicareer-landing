@@ -16,13 +16,13 @@ export function SignupBanner() {
             className={clsx("reveal", text.isVisible && "is-visible")}
           >
             <h3 className="m-0 mb-6 font-display text-[40px] font-light leading-[1.2] text-surface-light md:max-w-[50%] md:text-[64px] md:leading-[77px]">
-              Get started&mdash;your way.
+              Your next offer, effortlessly.
             </h3>
             <a
               href="https://account.ellipsus.com/sign-up"
               className="relative inline-flex h-[42px] items-center rounded-[12px] bg-white px-4 font-body text-[16px] font-medium leading-[18px] text-content-primary transition-opacity hover:opacity-80"
             >
-              Sign up&mdash;it&rsquo;s free
+              Sign up, it&rsquo;s free
             </a>
           </div>
 

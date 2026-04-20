@@ -14,19 +14,19 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    caption: "Stay in control with a personal growth plan",
+    caption: "Swipe a feed matched to your real skills",
     webm: "/videos/showcase-1-connected-drafts.webm",
     mp4: "/videos/showcase-1-connected-drafts.mp4",
     poster: "/images/showcase/poster-1-connected-drafts.png",
   },
   {
-    caption: "Nail interviews with AI-powered prep",
+    caption: "AI tailors your CV to every role",
     webm: "/videos/showcase-2-comments-drafts.webm",
     mp4: "/videos/showcase-2-comments-drafts.mp4",
     poster: "/images/showcase/poster-2-comments-drafts.png",
   },
   {
-    caption: "Apply, refine, land, repeat",
+    caption: "Auto-apply, track, follow up. All in one place.",
     webm: "/videos/showcase-3-merge.webm",
     mp4: "/videos/showcase-3-merge.mp4",
     poster: "/images/showcase/poster-3-merge.png",
@@ -68,7 +68,7 @@ export function Showcase() {
   const next = () => setIndex((i) => Math.min(SLIDES.length - 1, i + 1));
 
   return (
-    <section className="relative w-full bg-surface-inverted-2">
+    <section className="relative w-full bg-surface-inverted-2 [display:flow-root]">
       {/* Top wave divider */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -112,7 +112,7 @@ export function Showcase() {
                 className="hidden h-[29px] w-[73px] md:block"
               />
               <p className="font-body text-[20px] text-surface-light">
-                That&apos;s us, building careers!
+                That&apos;s us, landing offers!
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@ export function Showcase() {
                   title.isVisible && "is-visible",
                 )}
               >
-                One place for plans, prep, and applications
+                An AI recruiter that never sleeps.
               </h2>
 
               <p
@@ -157,10 +157,10 @@ export function Showcase() {
                 )}
                 style={{ "--reveal-delay": "150ms" } as React.CSSProperties}
               >
-                Your bespoke LinkedIn-to-Notion-to-DMs-to-Sheets-to-??? process
-                isn&rsquo;t landing that offer any faster. (And to be honest,
-                it sounds pretty stressful.) Streamline the way you plan, prep,
-                and apply with AICareer.
+                Stop juggling LinkedIn, spreadsheets, PDF resumes, and recruiter DMs.
+                Upload your CV once. Swipe right. AICareer does the rest: matching
+                roles, tailoring your CV, submitting applications, following up.
+                While you sleep.
               </p>
 
               <span

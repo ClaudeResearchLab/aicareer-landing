@@ -29,7 +29,7 @@ export function Statement() {
               title.isVisible && "is-visible",
             )}
           >
-            A principled alternative&mdash;by careerists, for careerists
+            Less grind. More offers.
           </h2>
 
           <div
@@ -42,9 +42,10 @@ export function Statement() {
           >
             <div className="w-full font-body text-[20px] leading-[30px] text-content-primary md:max-w-[500px] md:text-right md:text-[28px] md:leading-[42px]">
               <p className="m-0">
-                We think careerists should be free to{" "}
-                <span className="underline">steer their own path</span>&mdash;away from
-                empty networking and the <strong>reach of bullshit advice</strong>.
+                Landing a job shouldn&rsquo;t feel like a second job. Skip the spam,
+                the pay-to-play boards, the endless copy-paste.{" "}
+                <span className="underline">Your skills do the talking</span>.{" "}
+                <strong>AI handles the rest.</strong>
               </p>
             </div>
           </div>
@@ -55,7 +56,7 @@ export function Statement() {
             className="pointer-events-none absolute top-[194px] left-[532px] hidden w-[192px] text-right md:block"
           >
             <p className="m-0 font-body text-[18px] leading-[24.5px] text-[#529A6A]">
-              Your path is <strong>YOURS</strong>.
+              Skills <strong>&gt;</strong> keywords.
             </p>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -72,7 +73,7 @@ export function Statement() {
             className="pointer-events-none absolute top-[314.5px] left-[1088.62px] hidden w-[192px] md:block"
           >
             <p className="m-0 font-body text-[18px] leading-[24.5px] text-brand-coral">
-              No pay-to-play&mdash;<strong>ever</strong>.
+              No pay-to-play. <strong>Ever</strong>.
             </p>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}

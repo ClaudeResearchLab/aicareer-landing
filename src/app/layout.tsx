@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ellipsus.com"),
   title: "AICareer | Your AI career copilot",
   description:
-    "Plan moves, prep for interviews, and land offers on any device. AICareer is a principled alternative to generic job boards—built by careerists, for careerists. Sign up for free.",
+    "Your AI recruiter. Swipe through jobs matched to your skills. AICareer tailors your CV, auto-applies, and tracks every response. Sign up for free.",
   icons: {
     icon: [
       { url: "/seo/favicon.ico", sizes: "any" },
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     url: "https://ellipsus.com/",
     title: "AICareer | Your AI career copilot",
     description:
-      "Plan moves, prep for interviews, and land offers on any device. AICareer is a principled alternative to generic job boards—built by careerists, for careerists. Sign up for free.",
+      "Your AI recruiter. Swipe through jobs matched to your skills. AICareer tailors your CV, auto-applies, and tracks every response. Sign up for free.",
     images: [{ url: "/seo/og-image.jpg" }],
   },
   twitter: {
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     site: "@aicareer",
     title: "AICareer | Your AI career copilot",
     description:
-      "Plan moves, prep for interviews, and land offers on any device. AICareer is a principled alternative to generic job boards—built by careerists, for careerists. Sign up for free.",
+      "Your AI recruiter. Swipe through jobs matched to your skills. AICareer tailors your CV, auto-applies, and tracks every response. Sign up for free.",
     images: ["/seo/og-image.jpg"],
   },
   alternates: {

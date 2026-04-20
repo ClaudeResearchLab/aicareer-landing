@@ -5,6 +5,8 @@ import { useReveal } from "@/hooks/useReveal";
 import { useRotatingWord } from "@/hooks/useRotatingWord";
 import type { RotatingWord } from "@/types/homepage";
 
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const ROTATING_WORDS: RotatingWord[] = [
   { word: "ambitious", color: "#2173BE" },
   { word: "dedicated", color: "#529A6A" },
@@ -109,18 +111,18 @@ export function Introduction() {
               delay="500ms"
               className="absolute z-[1] hidden md:block"
               style={{
-                width: "280px",
-                height: "260.6px",
-                left: "1040px",
-                bottom: "339.4px",
+                width: "364px",
+                height: "339px",
+                left: "998px",
+                bottom: "280px",
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/decor/introduction/origami.svg"
+                src="/images/decor/introduction/handshake.png"
                 alt=""
-                width={280}
-                height={256}
+                width={364}
+                height={333}
                 className="block h-auto w-full"
                 aria-hidden="true"
               />
@@ -172,11 +174,11 @@ export function Introduction() {
             <Reveal delay="0ms" className="relative w-full">
               <div className="max-w-[900px] font-display text-[40px] font-light leading-[1.22] md:text-[60px]">
                 <p className="m-0">
-                  Plenty of tools are made for resumes, networking, and job boards.{" "}
+                  Plenty of tools spam job boards, charge for networking, and bury you in 200 tabs.{" "}
                   <strong
                     className="font-medium"
                     style={{
-                      backgroundImage: "url(/images/decor/introduction/wiggle.svg)",
+                      backgroundImage: `url(${BP}/images/decor/introduction/wiggle.svg)`,
                       backgroundSize: "103% 16px",
                       backgroundPosition: "0 100%",
                       backgroundRepeat: "no-repeat",
@@ -191,29 +193,29 @@ export function Introduction() {
             <Reveal delay="0ms" className="relative w-full">
               <div className="max-w-[900px] font-display text-[40px] font-light leading-[1.22] md:text-[60px]">
                 <p className="m-0">
-                  AICareer is here to help you plan moves, nail interviews, own negotiations, and{" "}
+                  AICareer matches jobs to your skills, tailors your CV per role, auto-applies on your behalf, and writes the follow-ups{" "}
                   <span
                     style={{
                       textDecoration: "none",
-                      backgroundImage: "url(/images/decor/introduction/underline.svg)",
+                      backgroundImage: `url(${BP}/images/decor/introduction/underline.svg)`,
                       backgroundSize: "100% 20px",
                       backgroundPosition: "0 110%",
                       backgroundRepeat: "no-repeat",
                     }}
                   >
-                    grow the craft
-                  </span>{" "}
-                  in
+                    while you sleep
+                  </span>
+                  .{" "}
                   <strong
                     className="font-medium"
                     style={{
-                      backgroundImage: "url(/images/decor/introduction/circle.svg)",
+                      backgroundImage: `url(${BP}/images/decor/introduction/circle.svg)`,
                       backgroundSize: "101% 106%",
                       backgroundPosition: "50% 50%",
                       backgroundRepeat: "no-repeat",
                     }}
                   >
-                    {" "}all its forms.
+                    All in one place.
                   </strong>
                 </p>
               </div>
@@ -227,19 +229,19 @@ export function Introduction() {
             <div
               className="absolute z-[1] hidden md:block"
               style={{
-                width: "400px",
-                height: "402.6px",
-                left: "1008px",
-                bottom: "37.4px",
+                width: "460px",
+                height: "307px",
+                left: "948px",
+                bottom: "80px",
               }}
             >
               <ArrowDecor />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/decor/introduction/composition.svg"
+                src="/images/decor/introduction/desk.png"
                 alt=""
-                width={400}
-                height={398}
+                width={460}
+                height={307}
                 className="block h-auto w-full"
                 aria-hidden="true"
               />

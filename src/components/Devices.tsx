@@ -12,42 +12,42 @@ type DeviceImage = {
 const DEVICES: DeviceImage[] = [
   {
     src: "/images/devices/desktop.png",
-    alt: "Ellipsus on Desktop",
-    width: 1242,
+    alt: "AICareer on Desktop",
+    width: 970,
     height: 776,
-    style: { top: "0px", left: "0px", transform: "translateY(150px)" },
+    style: { top: "15px", left: "136px" },
   },
   {
     src: "/images/devices/tablet.png",
-    alt: "Ellipsus on Tablet",
+    alt: "AICareer on Tablet",
     width: 384,
     height: 584,
     style: {
       top: "305.945px",
       left: "0px",
-      transform: "translateX(-50px) translateY(150px) rotate(-20deg)",
+      transform: "translateX(-50px) rotate(-20deg)",
     },
   },
   {
     src: "/images/devices/phone-android.png",
-    alt: "Ellipsus on Android",
+    alt: "AICareer on Android",
     width: 269,
     height: 568,
     style: {
       top: "275.43px",
       left: "870.406px",
-      transform: "translateX(50px) translateY(150px)",
+      transform: "translateX(50px)",
     },
   },
   {
     src: "/images/devices/phone-ios.png",
-    alt: "Ellipsus on iPhone",
+    alt: "AICareer on iPhone",
     width: 230,
     height: 468,
     style: {
       top: "359.938px",
       left: "1049.6px",
-      transform: "translateX(50px) translateY(150px) rotate(10deg)",
+      transform: "translateX(50px) rotate(10deg)",
     },
   },
 ];
