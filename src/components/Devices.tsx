@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBase } from "@/lib/basePath";
 import { LettersScatter } from "./LettersScatter";
 
 type DeviceImage = {
@@ -62,7 +63,7 @@ export function Devices() {
             {DEVICES.map((d) => (
               <Image
                 key={d.src}
-                src={d.src}
+                src={withBase(d.src)}
                 alt={d.alt}
                 width={d.width}
                 height={d.height}

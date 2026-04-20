@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { withBase } from "@/lib/basePath";
 import { useReveal } from "@/hooks/useReveal";
 
 export function Counter() {
@@ -10,7 +11,7 @@ export function Counter() {
     <section className="sticky top-[74px] w-full bg-surface-light py-[120px] md:py-[200px]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/counter/wave.svg"
+        src={withBase("/images/counter/wave.svg")}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute bottom-[612.92px] left-0 h-[63.08px] w-full -translate-y-[31.54px]"

@@ -5,7 +5,7 @@ import { useReveal } from "@/hooks/useReveal";
 import { useRotatingWord } from "@/hooks/useRotatingWord";
 import type { RotatingWord } from "@/types/homepage";
 
-const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+import { BASE_PATH as BP, withBase } from "@/lib/basePath";
 
 const ROTATING_WORDS: RotatingWord[] = [
   { word: "ambitious", color: "#2173BE" },
@@ -119,7 +119,7 @@ export function Introduction() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/decor/introduction/handshake.png"
+                src={withBase("/images/decor/introduction/handshake.png")}
                 alt=""
                 width={364}
                 height={333}
@@ -163,7 +163,7 @@ export function Introduction() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/decor/introduction/books.svg"
+                src={withBase("/images/decor/introduction/books.svg")}
                 alt=""
                 width={280}
                 height={268}
@@ -238,7 +238,7 @@ export function Introduction() {
               <ArrowDecor />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/decor/introduction/desk.png"
+                src={withBase("/images/decor/introduction/desk.png")}
                 alt=""
                 width={460}
                 height={307}

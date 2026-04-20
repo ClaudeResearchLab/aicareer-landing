@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { withBase } from "@/lib/basePath";
 import { useReveal } from "@/hooks/useReveal";
 
 export function SignupBanner() {
@@ -36,7 +37,7 @@ export function SignupBanner() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/signup/decor.svg"
+              src={withBase("/images/signup/decor.svg")}
               alt=""
               aria-hidden="true"
               className="h-auto w-full"

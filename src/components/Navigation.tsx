@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { withBase } from "@/lib/basePath";
 import {
   EllipsusLogo,
   NavChevronIcon,
@@ -139,7 +140,7 @@ export function Navigation() {
 
               <div className="relative w-[300px] h-[220px] overflow-hidden rounded-l">
                 <Image
-                  src={entry.previewImage.src}
+                  src={withBase(entry.previewImage.src)}
                   alt={entry.previewImage.alt}
                   fill
                   sizes="300px"

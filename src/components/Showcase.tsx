@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
+import { withBase } from "@/lib/basePath";
 import { useReveal } from "@/hooks/useReveal";
 
 type Slide = {
@@ -72,7 +73,7 @@ export function Showcase() {
       {/* Top wave divider */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/showcase/decor/wave-top.svg"
+        src={withBase("/images/showcase/decor/wave-top.svg")}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute top-0 left-0 -translate-y-[54px] h-[93px] w-full"
@@ -93,7 +94,7 @@ export function Showcase() {
                 {AVATARS.map((a, i) => (
                   <Image
                     key={a.src}
-                    src={a.src}
+                    src={withBase(a.src)}
                     alt={a.alt}
                     width={48}
                     height={48}
@@ -106,7 +107,7 @@ export function Showcase() {
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/showcase/decor/collab-arrow.svg"
+                src={withBase("/images/showcase/decor/collab-arrow.svg")}
                 alt=""
                 aria-hidden="true"
                 className="hidden h-[29px] w-[73px] md:block"
@@ -133,7 +134,7 @@ export function Showcase() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/showcase/decor/cup.svg"
+                  src={withBase("/images/showcase/decor/cup.svg")}
                   alt=""
                   className="h-full w-full"
                 />
@@ -174,7 +175,7 @@ export function Showcase() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/showcase/decor/lamp.svg"
+                  src={withBase("/images/showcase/decor/lamp.svg")}
                   alt=""
                   className="h-full w-full"
                 />
@@ -213,15 +214,15 @@ export function Showcase() {
                         videoRefs.current[i] = el;
                       }}
                       className="absolute inset-0 h-full w-full object-cover"
-                      poster={s.poster}
+                      poster={withBase(s.poster)}
                       muted
                       loop
                       playsInline
                       preload="metadata"
                       autoPlay={i === 0}
                     >
-                      <source src={s.webm} type="video/webm" />
-                      <source src={s.mp4} type="video/mp4" />
+                      <source src={withBase(s.webm)} type="video/webm" />
+                      <source src={withBase(s.mp4)} type="video/mp4" />
                     </video>
                   </div>
                 ))}
@@ -242,7 +243,7 @@ export function Showcase() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/showcase/decor/slide-arrow.svg"
+                src={withBase("/images/showcase/decor/slide-arrow.svg")}
                 alt=""
                 className="h-full w-full rotate-180"
               />
@@ -262,7 +263,7 @@ export function Showcase() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/showcase/decor/slide-arrow.svg"
+                src={withBase("/images/showcase/decor/slide-arrow.svg")}
                 alt=""
                 className="h-full w-full"
               />
@@ -283,7 +284,7 @@ export function Showcase() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/showcase/decor/slide-arrow.svg"
+                src={withBase("/images/showcase/decor/slide-arrow.svg")}
                 alt=""
                 className="h-full w-full rotate-180"
               />
@@ -317,7 +318,7 @@ export function Showcase() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/showcase/decor/slide-arrow.svg"
+                src={withBase("/images/showcase/decor/slide-arrow.svg")}
                 alt=""
                 className="h-full w-full"
               />

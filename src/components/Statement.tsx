@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { withBase } from "@/lib/basePath";
 import { useReveal } from "@/hooks/useReveal";
 
 const BALLS = [
@@ -61,7 +62,7 @@ export function Statement() {
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/statement/caption-arrow-1.svg"
+            src={withBase("/images/statement/caption-arrow-1.svg")}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute top-[160px] left-[740px] hidden h-[51px] w-[80px] md:block"
@@ -78,7 +79,7 @@ export function Statement() {
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/statement/caption-arrow-2.svg"
+            src={withBase("/images/statement/caption-arrow-2.svg")}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute top-[261.5px] left-[1160px] hidden h-[45px] w-[40px] md:block"
@@ -95,7 +96,7 @@ export function Statement() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/statement/robot.svg"
+              src={withBase("/images/statement/robot.svg")}
               alt=""
               aria-hidden="true"
               className="h-auto w-full"
@@ -117,7 +118,7 @@ export function Statement() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={b.src}
+                  src={withBase(b.src)}
                   alt=""
                   aria-hidden="true"
                   style={{
