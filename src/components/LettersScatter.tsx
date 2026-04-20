@@ -9,9 +9,11 @@ type Word = {
   rotation: number;
 };
 
-// Motivating phrase, fragmented into meaningful words the user can hover to
-// reveal. The short connectives live in FREE_LETTERS below — they float as
-// stray glyphs rather than gathering into anything.
+// The 12 words form a single coherent sentence when all gather at once:
+// "YOUR NEXT CHAPTER BEGINS / HERE · APPLY / GET · OFFERED / HIRED AND FINALLY THRIVE".
+// Read border-wise (top L→R, left col top→bottom, right col top→bottom, bottom L→R)
+// it scans as "Your next chapter begins here, apply, get offered, hired, and
+// finally thrive." No stray "preposition" glyphs — every letter belongs to a word.
 const WORDS: Word[] = [
   // Top band (above the title)
   { id: "your",    text: "YOUR",    anchor: { x: 250,  y: 200 }, rotation: -5 },
@@ -20,43 +22,16 @@ const WORDS: Word[] = [
   { id: "begins",  text: "BEGINS",  anchor: { x: 1260, y: 215 }, rotation:  5 },
 
   // Left & right columns (flanking the hero text)
-  { id: "career",  text: "CAREER",  anchor: { x: 160,  y: 390 }, rotation:  6 },
-  { id: "truly",   text: "TRULY",   anchor: { x: 1340, y: 380 }, rotation: -5 },
-  { id: "meant",   text: "MEANT",   anchor: { x: 170,  y: 570 }, rotation: -4 },
-  { id: "found",   text: "FOUND",   anchor: { x: 1330, y: 570 }, rotation:  4 },
+  { id: "here",    text: "HERE",    anchor: { x: 160,  y: 390 }, rotation:  6 },
+  { id: "get",     text: "GET",     anchor: { x: 1340, y: 380 }, rotation: -5 },
+  { id: "apply",   text: "APPLY",   anchor: { x: 170,  y: 570 }, rotation: -4 },
+  { id: "offered", text: "OFFERED", anchor: { x: 1330, y: 570 }, rotation:  4 },
 
   // Bottom band
-  { id: "offered", text: "OFFERED", anchor: { x: 265,  y: 820 }, rotation:  3 },
-  { id: "hired",   text: "HIRED",   anchor: { x: 600,  y: 840 }, rotation: -3 },
-  { id: "thrive",  text: "THRIVE",  anchor: { x: 940,  y: 825 }, rotation:  2 },
-  { id: "yours",   text: "YOURS",   anchor: { x: 1260, y: 810 }, rotation: -5 },
-];
-
-type FreeLetter = {
-  id: string;
-  char: string;
-  home: { x: number; y: number; rot: number };
-};
-
-const FREE_LETTERS: FreeLetter[] = [
-  { id: "fr-t1", char: "T", home: { x: 430, y: 300, rot: -16 } },
-  { id: "fr-h1", char: "H", home: { x: 455, y: 320, rot:  12 } },
-  { id: "fr-e1", char: "E", home: { x: 485, y: 305, rot:  -6 } },
-  { id: "fr-t2", char: "T", home: { x: 790, y: 300, rot:  18 } },
-  { id: "fr-o1", char: "O", home: { x: 820, y: 320, rot: -10 } },
-  { id: "fr-i1", char: "I", home: { x: 1055, y: 310, rot:  20 } },
-  { id: "fr-s1", char: "S", home: { x: 1080, y: 290, rot:  -8 } },
-  { id: "fr-a1", char: "A", home: { x: 90,   y: 310, rot: -22 } },
-  { id: "fr-o2", char: "O", home: { x: 1400, y: 305, rot:  14 } },
-  { id: "fr-f1", char: "F", home: { x: 1430, y: 325, rot:  -6 } },
-  { id: "fr-n1", char: "N", home: { x: 505, y: 475, rot:  16 } },
-  { id: "fr-n2", char: "R", home: { x: 990, y: 480, rot: -18 } },
-  { id: "fr-n3", char: "B", home: { x: 540, y: 695, rot:   8 } },
-  { id: "fr-n4", char: "Y", home: { x: 975, y: 690, rot: -12 } },
-  { id: "fr-i2", char: "I", home: { x: 455, y: 755, rot: -14 } },
-  { id: "fr-n5", char: "N", home: { x: 480, y: 775, rot:  10 } },
-  { id: "fr-b1", char: "B", home: { x: 795, y: 755, rot: -18 } },
-  { id: "fr-y1", char: "Y", home: { x: 825, y: 775, rot:  14 } },
+  { id: "hired",   text: "HIRED",   anchor: { x: 265,  y: 820 }, rotation:  3 },
+  { id: "and",     text: "AND",     anchor: { x: 600,  y: 840 }, rotation: -3 },
+  { id: "finally", text: "FINALLY", anchor: { x: 940,  y: 825 }, rotation:  2 },
+  { id: "thrive",  text: "THRIVE",  anchor: { x: 1260, y: 810 }, rotation: -5 },
 ];
 
 const LETTER_SIZE = 15;
@@ -157,7 +132,6 @@ export function LettersScatter({ className }: { className?: string }) {
           translate: 0 0;
           rotate: var(--rot-home, 0deg);
         }
-        .ls-free { fill-opacity: 0.22; pointer-events: none; }
         .ls-word-letter { pointer-events: all; cursor: default; }
 
         /* Active word — letters travel to target, fully opaque. */
@@ -175,17 +149,11 @@ export function LettersScatter({ className }: { className?: string }) {
           fill-opacity: 0.95;
         }
 
-        /* Hovering the hero CTA reveals the whole motivating sentence —
-           every word gathers at once, nothing is dimmed. Free "preposition"
-           letters simply brighten in place. */
+        /* Hovering the hero CTA gathers the whole motivating sentence at once. */
         .hero-scatter-root:has(.hero-cta:hover) .ls-word-letter {
           translate: var(--dx) var(--dy);
           rotate: var(--rot-target);
           fill-opacity: 0.95;
-          animation-play-state: paused;
-        }
-        .hero-scatter-root:has(.hero-cta:hover) .ls-free {
-          fill-opacity: 0.7;
           animation-play-state: paused;
         }
 
@@ -195,29 +163,6 @@ export function LettersScatter({ className }: { className?: string }) {
       `}</style>
 
       <g className="ls-root" data-any-active={hoveredId ? "true" : "false"}>
-        {/* Free-floating connective letters — never gather */}
-        <g>
-          {FREE_LETTERS.map((f, i) => (
-            <text
-              key={f.id}
-              x={f.home.x}
-              y={f.home.y}
-              textAnchor="middle"
-              dominantBaseline="middle"
-              className="ls-letter ls-free"
-              style={
-                {
-                  "--rot-home": `${f.home.rot}deg`,
-                  animationDuration: `${10 + (i % 5) * 1.6}s`,
-                  animationDelay: `${-(i * 337 + 149) % 11000}ms`,
-                } as React.CSSProperties
-              }
-            >
-              {f.char}
-            </text>
-          ))}
-        </g>
-
         {/* One <g.ls-word> per word. onMouseEnter/Leave toggle state — letters
             AND hit-rect are both event targets, so hovering a letter counts. */}
         {groups.map(({ word, letters }) => {
