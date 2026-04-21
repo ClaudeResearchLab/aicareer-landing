@@ -353,8 +353,8 @@ export function CalendarXIcon(props: SVGProps<SVGSVGElement>) {
       <line x1="16" y1="2" x2="16" y2="6" />
       <line x1="8" y1="2" x2="8" y2="6" />
       <line x1="3" y1="10" x2="21" y2="10" />
-      <line x1="10" y1="14" x2="14" y2="18" />
-      <line x1="14" y1="14" x2="10" y2="18" />
+      <line className="pain-xmark" x1="10" y1="14" x2="14" y2="18" />
+      <line className="pain-xmark" x1="14" y1="14" x2="10" y2="18" />
     </PainBase>
   );
 }
@@ -393,8 +393,8 @@ export function HourglassIcon(props: SVGProps<SVGSVGElement>) {
 export function LayersIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <PainBase {...props}>
-      <polygon points="12 2 2 7 12 12 22 7 12 2" />
-      <polyline points="2 17 12 22 22 17" />
+      <polygon className="pain-layer-top" points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline className="pain-layer-mid" points="2 17 12 22 22 17" />
       <polyline points="2 12 12 17 22 12" />
     </PainBase>
   );
@@ -412,14 +412,14 @@ export function KeyboardIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <PainBase {...props}>
       <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="M6 8h.01" />
-      <path d="M10 8h.01" />
-      <path d="M14 8h.01" />
-      <path d="M18 8h.01" />
-      <path d="M6 12h.01" />
-      <path d="M10 12h.01" />
-      <path d="M14 12h.01" />
-      <path d="M18 12h.01" />
+      <path className="pain-key pain-key-1" d="M6 8h.01" />
+      <path className="pain-key pain-key-2" d="M10 8h.01" />
+      <path className="pain-key pain-key-3" d="M14 8h.01" />
+      <path className="pain-key pain-key-4" d="M18 8h.01" />
+      <path className="pain-key pain-key-5" d="M6 12h.01" />
+      <path className="pain-key pain-key-6" d="M10 12h.01" />
+      <path className="pain-key pain-key-7" d="M14 12h.01" />
+      <path className="pain-key pain-key-8" d="M18 12h.01" />
       <path d="M7 16h10" />
     </PainBase>
   );
@@ -436,9 +436,9 @@ export function MoonIcon(props: SVGProps<SVGSVGElement>) {
 export function TargetIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <PainBase {...props}>
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="6" />
-      <circle cx="12" cy="12" r="2" />
+      <circle className="pain-ring pain-ring-1" cx="12" cy="12" r="10" />
+      <circle className="pain-ring pain-ring-2" cx="12" cy="12" r="6" />
+      <circle className="pain-ring pain-ring-3" cx="12" cy="12" r="2" />
     </PainBase>
   );
 }
@@ -475,6 +475,9 @@ export function BellIcon(props: SVGProps<SVGSVGElement>) {
 export function TableIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <PainBase {...props}>
+      <rect className="pain-cell pain-cell-1" x="3.5" y="9.5" width="5" height="5" fill="currentColor" stroke="none" opacity="0" />
+      <rect className="pain-cell pain-cell-2" x="9.5" y="15.5" width="5" height="5" fill="currentColor" stroke="none" opacity="0" />
+      <rect className="pain-cell pain-cell-3" x="15.5" y="3.5" width="5" height="5" fill="currentColor" stroke="none" opacity="0" />
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <line x1="3" y1="9" x2="21" y2="9" />
       <line x1="3" y1="15" x2="21" y2="15" />

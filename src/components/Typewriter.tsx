@@ -87,14 +87,20 @@ export function Typewriter() {
 
   return (
     <span className="typewriter">
-      <span className="typewriter-prefix">{displayPrefix}</span>
-      {inPrefixPhase ? (
-        <span className="typewriter-caret typewriter-caret-prefix" aria-hidden="true" />
-      ) : (
-        <span className="typewriter-word">
-          <span className="typewriter-ghost" aria-hidden="true">
-            {LONGEST}
-          </span>
+      <span className="typewriter-prefix">
+        {displayPrefix}
+        {inPrefixPhase && (
+          <span
+            className="typewriter-caret typewriter-caret-prefix typewriter-caret-abs"
+            aria-hidden="true"
+          />
+        )}
+      </span>
+      <span className="typewriter-word">
+        <span className="typewriter-ghost" aria-hidden="true">
+          {LONGEST}
+        </span>
+        {!inPrefixPhase && (
           <span
             className="typewriter-text"
             style={{ color }}
@@ -103,15 +109,16 @@ export function Typewriter() {
             {text}
             <span className="typewriter-caret" aria-hidden="true" />
           </span>
-        </span>
-      )}
+        )}
+      </span>
       <style>{`
         .typewriter {
           display: inline;
           white-space: normal;
         }
         .typewriter-prefix {
-          display: inline;
+          display: inline-block;
+          position: relative;
           white-space: pre;
         }
         .typewriter-word {
@@ -141,6 +148,12 @@ export function Typewriter() {
           background: currentColor;
           transform: translateY(0.06em);
           animation: typewriter-caret-blink 1.05s steps(2, start) infinite;
+        }
+        .typewriter-caret-abs {
+          position: absolute;
+          left: 100%;
+          top: 0;
+          margin-left: 0;
         }
         .typewriter-caret-prefix {
           color: #FBFBF9;

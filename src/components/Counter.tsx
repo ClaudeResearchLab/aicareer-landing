@@ -1,8 +1,62 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { withBase } from "@/lib/basePath";
 import { useReveal } from "@/hooks/useReveal";
+
+const COUNT_TARGET = 50000;
+const COUNT_DURATION_MS = 1800;
+
+function AnimatedCount({ active }: { active: boolean }) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!active) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / COUNT_DURATION_MS);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(Math.round(COUNT_TARGET * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active]);
+
+  const targetLabel = COUNT_TARGET.toLocaleString("en-US");
+  return (
+    <span
+      className="count-up"
+      aria-label={`${targetLabel}+`}
+      role="text"
+    >
+      <span className="count-up-ghost" aria-hidden="true">
+        {targetLabel}
+      </span>
+      <span className="count-up-value" aria-hidden="true">
+        {value.toLocaleString("en-US")}
+      </span>
+      <style>{`
+        .count-up {
+          position: relative;
+          display: inline-block;
+          font-variant-numeric: tabular-nums;
+          vertical-align: baseline;
+        }
+        .count-up-ghost {
+          visibility: hidden;
+        }
+        .count-up-value {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      `}</style>
+    </span>
+  );
+}
 
 export function Counter() {
   const reveal = useReveal<HTMLDivElement>();
@@ -25,10 +79,8 @@ export function Counter() {
           )}
         >
           <div className="flex flex-col items-center gap-10">
-            <p className="m-0 w-full max-w-[1100px] text-center font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[80px] md:leading-[97px]">
-              <span>Trusted by </span>
-              <span>50,000+ </span>
-              <span>job seekers. And the AI recruiter working for them.</span>
+            <p className="m-0 w-full max-w-[1100px] text-balance text-center font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[80px] md:leading-[97px]">
+              Trusted by <AnimatedCount active={reveal.isVisible} />+ job&nbsp;seekers. And we&rsquo;ve got their&nbsp;backs.
             </p>
             <a
               href="https://write.ellipsus.com/?utm_medium=website&utm_source=home_writers-count&utm_campaign=5569_join-for-free"
