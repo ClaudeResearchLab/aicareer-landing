@@ -23,20 +23,6 @@ export function Hero() {
 
       <div className="relative w-full px-6 md:px-20">
         <div className="mx-auto flex w-full max-w-[1312px] flex-col items-center">
-          <a
-            href="#whats-new"
-            className="group relative z-20 mb-8 inline-flex items-center gap-2 rounded-full border border-surface-light/25 bg-surface-light/5 px-4 py-1.5 font-body text-[13px] font-normal text-surface-light/85 backdrop-blur-sm transition-colors hover:border-surface-light/50 hover:text-surface-light"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-coral" aria-hidden="true" />
-            <span>AICareer for Web is here</span>
-            <span
-              aria-hidden="true"
-              className="ml-1 transition-transform duration-300 group-hover:translate-x-0.5"
-            >
-              →
-            </span>
-          </a>
-
           <h1 className="hero-title m-0 mb-[50px] text-center font-display text-[56px] font-light leading-[1.05] text-surface-light md:text-[96px]">
             Your dream job, found.
           </h1>
@@ -56,23 +42,6 @@ export function Hero() {
               Join for free
             </span>
           </a>
-
-          <ul className="relative z-20 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-body text-[13px] text-surface-light/75 md:text-[14px]">
-            <li className="inline-flex items-center gap-1.5">
-              <span aria-hidden="true" className="text-[15px] leading-none">★</span>
-              <span>Rated 4.8/5 on the App Store</span>
-            </li>
-            <li aria-hidden="true" className="h-3 w-px bg-surface-light/20" />
-            <li className="inline-flex items-center gap-1.5">
-              <span aria-hidden="true" className="text-[15px] leading-none">◆</span>
-              <span>50,000+ careerists hired</span>
-            </li>
-            <li aria-hidden="true" className="h-3 w-px bg-surface-light/20" />
-            <li className="inline-flex items-center gap-1.5">
-              <span aria-hidden="true" className="text-[15px] leading-none">◴</span>
-              <span>Saves 20+ hours every week</span>
-            </li>
-          </ul>
         </div>
       </div>
 
