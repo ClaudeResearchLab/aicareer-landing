@@ -35,9 +35,9 @@ const SLIDES: Slide[] = [
 ];
 
 const AVATARS = [
-  { src: "/images/avatars/mary-shelley.png", alt: "Job seeker Alex — landed an offer" },
-  { src: "/images/avatars/p.png", alt: "Job seeker Priya — landed an offer" },
-  { src: "/images/avatars/lord-byron.png", alt: "Job seeker Jordan — landed an offer" },
+  { src: "/images/avatars/mary-shelley.png", alt: "Job seeker Alex, landed an offer" },
+  { src: "/images/avatars/p.png", alt: "Job seeker Priya, landed an offer" },
+  { src: "/images/avatars/lord-byron.png", alt: "Job seeker Jordan, landed an offer" },
 ];
 
 const SLIDE_W = 809.45;

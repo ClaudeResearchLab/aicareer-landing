@@ -33,7 +33,7 @@ const STORIES: Story[] = [
   {
     status: "OFFER ACCEPTED",
     quote:
-      "Accepted an offer during a brutal market. Juggling other responsibilities made the search painful — AICareer made the whole process so much easier, week over week.",
+      "Accepted an offer during a brutal market. Juggling other responsibilities made the search painful. AICareer made the whole process so much easier, week over week.",
     tags: [
       { icon: "▣", label: "Capital One" },
       { icon: "✦", label: "Full time" },
@@ -172,7 +172,7 @@ export function Testimonials() {
             Landed at top companies worldwide.
           </h2>
           <p className="mt-5 font-body text-[17px] text-content-secondary md:text-[19px]">
-            From first jobs to senior moves — we do the heavy lifting.
+            From first jobs to senior moves. We do the heavy lifting.
           </p>
         </div>
 

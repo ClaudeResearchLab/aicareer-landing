@@ -29,7 +29,7 @@ export function Hero() {
           </h1>
 
           <p className="m-0 mb-10 max-w-[560px] text-center font-body text-xl font-normal text-surface-light md:text-2xl">
-            AICareer is the recruiter working for you 24/7. We match, tailor, auto-apply, and track every response — you just show up for the interview.
+            AICareer is the recruiter working for you 24/7. We match jobs, tailor your CV, auto-apply, and track every response. You just show up for the interview.
           </p>
 
           <a
