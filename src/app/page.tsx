@@ -8,7 +8,6 @@ import { Navigation } from "@/components/Navigation";
 import { PainPoints } from "@/components/PainPoints";
 import { Showcase } from "@/components/Showcase";
 import { SignupBanner } from "@/components/SignupBanner";
-import { Statement } from "@/components/Statement";
 import { Testimonials } from "@/components/Testimonials";
 
 export default function Home() {
@@ -20,10 +19,9 @@ export default function Home() {
       <Introduction />
       <PainPoints />
       <Showcase />
-      <Statement />
+      <Testimonials />
       <ComparisonTable />
       <Counter />
-      <Testimonials />
       <SignupBanner />
       <Footer />
     </main>
