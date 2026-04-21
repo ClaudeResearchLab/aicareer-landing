@@ -81,8 +81,9 @@ export function PainPoints() {
         </div>
 
         <p className="mt-14 max-w-[520px] text-center font-body text-[16px] text-content-secondary md:mt-20 md:text-[18px]">
-          You didn&rsquo;t sign up for any of that. AICareer does the busywork
-          so you can just&hellip; apply.
+          You didn&rsquo;t sign up for any of that.
+          <br />
+          AICareer does the busywork so you can just&hellip; apply.
         </p>
       </div>
 
