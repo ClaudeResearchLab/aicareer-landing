@@ -3,7 +3,6 @@ import { Counter } from "@/components/Counter";
 import { Devices } from "@/components/Devices";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
-import { Introduction } from "@/components/Introduction";
 import { Navigation } from "@/components/Navigation";
 import { PainPoints } from "@/components/PainPoints";
 import { Showcase } from "@/components/Showcase";
@@ -17,7 +16,6 @@ export default function Home() {
       <Hero />
       <Devices />
       <Testimonials />
-      <Introduction />
       <PainPoints />
       <Showcase />
       <ComparisonTable />
