@@ -38,8 +38,27 @@ export function Typewriter() {
   const [prefixText, setPrefixText] = useState("");
   const [text, setText] = useState<string>("");
   const [phase, setPhase] = useState<Phase>("prefix-typing");
+  const [fontsReady, setFontsReady] = useState(false);
+
+  // Roslindale Narrow Light is ~10-15% narrower than the serif fallback; if we
+  // start typing before the woff2 is loaded, the font swap lands mid-animation
+  // (often at the prefix→word handoff) and the centered H1 snaps left.
+  useEffect(() => {
+    if (typeof document === "undefined" || !document.fonts) {
+      setFontsReady(true);
+      return;
+    }
+    let cancelled = false;
+    document.fonts.ready.then(() => {
+      if (!cancelled) setFontsReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
+    if (!fontsReady) return;
     let id: number;
 
     if (phase === "prefix-typing") {
@@ -79,7 +98,7 @@ export function Typewriter() {
     }
 
     return () => window.clearTimeout(id);
-  }, [text, prefixText, phase, wordIndex]);
+  }, [fontsReady, text, prefixText, phase, wordIndex]);
 
   const inPrefixPhase = phase === "prefix-typing" || phase === "prefix-hold";
   const displayPrefix = inPrefixPhase ? prefixText : PREFIX;
@@ -100,16 +119,18 @@ export function Typewriter() {
         <span className="typewriter-ghost" aria-hidden="true">
           {LONGEST}
         </span>
-        {!inPrefixPhase && (
-          <span
-            className="typewriter-text"
-            style={{ color }}
-            aria-live="polite"
-          >
-            {text}
-            <span className="typewriter-caret" aria-hidden="true" />
-          </span>
-        )}
+        <span
+          className="typewriter-text"
+          style={{ color }}
+          aria-live="polite"
+        >
+          {!inPrefixPhase && (
+            <>
+              {text}
+              <span className="typewriter-caret" aria-hidden="true" />
+            </>
+          )}
+        </span>
       </span>
       <style>{`
         .typewriter {
@@ -122,19 +143,21 @@ export function Typewriter() {
           white-space: pre;
         }
         .typewriter-word {
-          position: relative;
-          display: inline-block;
+          display: inline-grid;
+          grid-template-columns: max-content;
           vertical-align: baseline;
         }
+        .typewriter-ghost,
+        .typewriter-text {
+          grid-column: 1;
+          grid-row: 1;
+        }
         .typewriter-ghost {
-          display: inline-block;
           visibility: hidden;
           white-space: nowrap;
         }
         .typewriter-text {
-          position: absolute;
-          left: 0;
-          top: 0;
+          justify-self: start;
           display: inline-flex;
           align-items: baseline;
           white-space: nowrap;

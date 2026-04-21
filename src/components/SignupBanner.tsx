@@ -37,10 +37,11 @@ export function SignupBanner() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={withBase("/images/signup/decor.svg")}
+              src={withBase("/images/signup/decor.png")}
               alt=""
               aria-hidden="true"
               className="h-auto w-full"
+              style={{ filter: "invert(1)" }}
             />
           </div>
         </section>

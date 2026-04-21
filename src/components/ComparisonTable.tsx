@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { useReveal } from "@/hooks/useReveal";
 
-type Cell = { ok: boolean; note?: string };
+type Cell = { ok: boolean; note?: string; scale?: 1 | 2 | 3 };
 type Row = { icon: string; feature: string; us: Cell; ai: Cell; manual: Cell };
 
 const ROWS: Row[] = [
@@ -24,9 +24,9 @@ const ROWS: Row[] = [
   {
     icon: "⏱",
     feature: "Time spent per job",
-    us:     { ok: true,  note: "A few seconds" },
-    ai:     { ok: true,  note: "A few minutes" },
-    manual: { ok: false, note: "15+ minutes" },
+    us:     { ok: true,  note: "A few seconds", scale: 1 },
+    ai:     { ok: true,  note: "A few minutes", scale: 2 },
+    manual: { ok: false, note: "15+ minutes",   scale: 3 },
   },
   {
     icon: "✦",
@@ -86,6 +86,82 @@ const ROWS: Row[] = [
   },
 ];
 
+type ColumnKey = "us" | "ai" | "manual";
+type Column = {
+  key: ColumnKey;
+  name: string;
+  subtitle: string;
+  accent?: boolean;
+  badge?: string;
+};
+
+const COLUMNS: Column[] = [
+  { key: "us",     name: "AICareer",    subtitle: "End-to-end AI recruiter",    accent: true, badge: "Recommended" },
+  { key: "ai",     name: "AI tools",    subtitle: "ChatGPT, Claude, Gemini…" },
+  { key: "manual", name: "Traditional", subtitle: "Spreadsheets & job boards" },
+];
+
+const DOT_COLORS: Record<1 | 2 | 3, string> = {
+  1: "bg-brand-green",
+  2: "bg-brand-orange",
+  3: "bg-brand-coral",
+};
+
+const GRID_COLS = "grid-cols-[minmax(140px,1.2fr)_1.3fr_1fr_1fr]";
+
+function TimeDots({
+  level,
+  className,
+}: {
+  level: 1 | 2 | 3;
+  className?: string;
+}) {
+  const color = DOT_COLORS[level];
+  return (
+    <span
+      aria-hidden="true"
+      className={clsx("inline-flex items-center gap-1", className)}
+    >
+      {[1, 2, 3].map((i) => (
+        <span
+          key={i}
+          className={clsx(
+            "block h-[5px] w-[5px] rounded-full",
+            i <= level ? color : "bg-border-tertiary",
+          )}
+        />
+      ))}
+    </span>
+  );
+}
+
+function CheckCircle({
+  ok,
+  accent,
+  className,
+}: {
+  ok: boolean;
+  accent?: boolean;
+  className?: string;
+}) {
+  return (
+    <span
+      aria-hidden="true"
+      className={clsx(
+        "flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[12px] font-medium",
+        ok
+          ? accent
+            ? "bg-brand-green text-surface-light"
+            : "bg-highlight-green-idle text-content-success"
+          : "bg-surface-dim text-content-secondary",
+        className,
+      )}
+    >
+      {ok ? "✓" : "✕"}
+    </span>
+  );
+}
+
 function Mark({
   cell,
   accent,
@@ -106,19 +182,11 @@ function Mark({
           "self-stretch -my-4 py-4 -mr-2 pr-2 border-r border-border-tertiary",
       )}
     >
-      <span
-        aria-hidden="true"
-        className={clsx(
-          "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[12px] font-medium",
-          cell.ok
-            ? accent
-              ? "bg-brand-green text-surface-light"
-              : "bg-highlight-green-idle text-content-success"
-            : "bg-surface-dim text-content-secondary",
-        )}
-      >
-        {cell.ok ? "✓" : "✕"}
-      </span>
+      {cell.scale ? (
+        <TimeDots level={cell.scale} className="mt-[9px]" />
+      ) : (
+        <CheckCircle ok={cell.ok} accent={accent} className="mt-0.5" />
+      )}
       {cell.note && (
         <span
           className={clsx(
@@ -136,6 +204,7 @@ function Mark({
 export function ComparisonTable() {
   const heading = useReveal<HTMLDivElement>();
   const table = useReveal<HTMLDivElement>();
+  const mobile = useReveal<HTMLDivElement>();
 
   return (
     <section className="relative w-full bg-surface-light px-5 py-[100px] md:px-20 md:py-[160px]">
@@ -161,77 +230,196 @@ export function ComparisonTable() {
           </p>
         </div>
 
+        {/* Desktop table */}
         <div
           ref={table.ref}
           className={clsx(
-            "reveal mt-14 w-full overflow-hidden rounded-l border border-border-tertiary bg-surface-primary shadow-l-primary md:mt-20",
+            "reveal relative mt-14 hidden w-full md:mt-20 md:block",
             table.isVisible && "is-visible",
           )}
           style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         >
-          {/* Header row */}
-          <div className="grid grid-cols-[minmax(160px,1.3fr)_1.2fr_1.2fr_1.2fr] items-center gap-4 border-b border-border-tertiary bg-surface-light px-5 py-5 md:px-8">
+          {/* AICareer column frame — lifted card floating behind/around the table */}
+          <div
+            aria-hidden="true"
+            className={clsx(
+              "pointer-events-none absolute inset-0 grid gap-4 px-5 md:px-8",
+              GRID_COLS,
+            )}
+          >
             <div />
-            <div className="flex flex-col self-stretch -my-5 py-5 -mx-2 px-2 bg-highlight-green-idle/55 border-l border-r border-border-tertiary">
-              <span className="font-display text-[18px] font-medium text-content-success md:text-[22px]">
-                AICareer
-              </span>
-              <span className="mt-1 font-body text-[12px] text-content-secondary md:text-[13px]">
-                End-to-end AI recruiter
-              </span>
-            </div>
-            <div className="flex flex-col self-stretch -my-5 py-5 -mr-2 pr-2 border-r border-border-tertiary">
-              <span className="font-display text-[18px] font-medium text-content-primary md:text-[22px]">
-                AI tools
-              </span>
-              <span className="mt-1 font-body text-[12px] text-content-secondary md:text-[13px]">
-                ChatGPT, Claude, Gemini&hellip;
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display text-[18px] font-medium text-content-primary md:text-[22px]">
-                Traditional
-              </span>
-              <span className="mt-1 font-body text-[12px] text-content-secondary md:text-[13px]">
-                Spreadsheets & job boards
-              </span>
-            </div>
+            <div className="-mx-2 -my-4 rounded-l border border-brand-green/25 bg-highlight-green-idle/55 shadow-l-primary" />
+            <div />
+            <div />
           </div>
 
-          {/* Rows */}
-          {ROWS.map((row, i) => (
+          {/* Table */}
+          <div className="relative overflow-hidden rounded-l border border-border-tertiary bg-surface-primary shadow-l-primary">
+            {/* Header */}
             <div
-              key={row.feature}
               className={clsx(
-                "grid grid-cols-[minmax(160px,1.3fr)_1.2fr_1.2fr_1.2fr] items-start gap-4 px-5 py-4 md:px-8",
-                i !== ROWS.length - 1 && "border-b border-border-tertiary",
-                i % 2 === 1 && "bg-surface-light/60",
+                "grid items-stretch gap-4 border-b border-border-tertiary bg-surface-light px-5 py-6 md:px-8",
+                GRID_COLS,
               )}
             >
-              <div className="flex items-start gap-3 pt-0.5">
-                <span
-                  aria-hidden="true"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-s bg-surface-light text-[14px] text-content-secondary shadow-xs-primary md:h-8 md:w-8"
-                >
-                  {row.icon}
+              <div />
+              <div className="flex flex-col justify-between self-stretch -my-6 py-6 -mx-2 px-3 bg-highlight-green-idle/55 border-l border-r border-border-tertiary">
+                <span className="inline-flex self-start items-center gap-1.5 rounded-full bg-brand-green/15 px-2.5 py-0.5 font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-success">
+                  <span aria-hidden="true">✦</span>
+                  Recommended
                 </span>
-                <span className="font-body text-[14px] font-medium leading-[1.35] text-content-primary md:text-[15px]">
-                  {row.feature}
-                </span>
+                <div className="mt-4 flex flex-col gap-1">
+                  <span className="font-display text-[18px] font-medium text-content-success md:text-[22px]">
+                    AICareer
+                  </span>
+                  <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-secondary">
+                    End-to-end AI recruiter
+                  </span>
+                </div>
               </div>
-              <Mark cell={row.us} accent />
-              <Mark cell={row.ai} divider />
-              <Mark cell={row.manual} />
+              <div className="flex flex-col justify-end self-stretch -my-6 py-6 -mr-2 pr-2 border-r border-border-tertiary">
+                <div className="flex flex-col gap-1">
+                  <span className="font-display text-[18px] font-medium text-content-primary md:text-[22px]">
+                    AI tools
+                  </span>
+                  <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-secondary">
+                    ChatGPT, Claude, Gemini…
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col justify-end self-stretch -my-6 py-6">
+                <div className="flex flex-col gap-1">
+                  <span className="font-display text-[18px] font-medium text-content-primary md:text-[22px]">
+                    Traditional
+                  </span>
+                  <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-secondary">
+                    Spreadsheets & job boards
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Rows */}
+            {ROWS.map((row, i) => (
+              <div
+                key={row.feature}
+                className={clsx(
+                  "grid items-start gap-4 px-5 py-4 transition-colors duration-200 md:px-8",
+                  GRID_COLS,
+                  i !== ROWS.length - 1 && "border-b border-border-tertiary",
+                  i % 2 === 1 && "bg-surface-light/60",
+                  "hover:bg-surface-light",
+                )}
+              >
+                <div className="flex items-start gap-3 pt-0.5">
+                  <span
+                    aria-hidden="true"
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-s bg-surface-light text-[14px] text-content-secondary shadow-xs-primary md:h-8 md:w-8"
+                  >
+                    {row.icon}
+                  </span>
+                  <span className="font-body text-[14px] font-medium leading-[1.35] text-content-primary md:text-[15px]">
+                    {row.feature}
+                  </span>
+                </div>
+                <Mark cell={row.us} accent />
+                <Mark cell={row.ai} divider />
+                <Mark cell={row.manual} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile stack — 3 cards, AICareer first and lifted */}
+        <div
+          ref={mobile.ref}
+          className={clsx(
+            "reveal mt-10 flex w-full flex-col gap-5 md:hidden",
+            mobile.isVisible && "is-visible",
+          )}
+          style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+        >
+          {COLUMNS.map((col) => (
+            <div
+              key={col.key}
+              className={clsx(
+                "rounded-l border p-5",
+                col.accent
+                  ? "border-brand-green/25 bg-highlight-green-idle/55 shadow-l-primary"
+                  : "border-border-tertiary bg-surface-primary shadow-s-primary",
+              )}
+            >
+              {col.badge && (
+                <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-green/15 px-2.5 py-0.5 font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-success">
+                  <span aria-hidden="true">✦</span>
+                  {col.badge}
+                </span>
+              )}
+              <div className="flex flex-col gap-1">
+                <h3
+                  className={clsx(
+                    "font-display text-[22px] font-medium",
+                    col.accent ? "text-content-success" : "text-content-primary",
+                  )}
+                >
+                  {col.name}
+                </h3>
+                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-secondary">
+                  {col.subtitle}
+                </p>
+              </div>
+              <ul
+                className={clsx(
+                  "mt-5 flex flex-col gap-3 border-t pt-4",
+                  col.accent ? "border-brand-green/20" : "border-border-tertiary/60",
+                )}
+              >
+                {ROWS.map((row) => {
+                  const cell = row[col.key];
+                  return (
+                    <li key={row.feature} className="flex flex-col gap-1">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex min-w-0 items-start gap-2.5">
+                          <span
+                            aria-hidden="true"
+                            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-s bg-surface-light text-[13px] text-content-secondary shadow-xs-primary"
+                          >
+                            {row.icon}
+                          </span>
+                          <span className="font-body text-[14px] font-medium leading-[1.3] text-content-primary">
+                            {row.feature}
+                          </span>
+                        </div>
+                        <div className="shrink-0 pt-1">
+                          {cell.scale ? (
+                            <TimeDots level={cell.scale} />
+                          ) : (
+                            <CheckCircle ok={cell.ok} accent={col.accent} />
+                          )}
+                        </div>
+                      </div>
+                      {cell.note && (
+                        <p className="pl-[34px] font-body text-[12px] leading-[1.4] text-content-secondary">
+                          {cell.note}
+                        </p>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           ))}
         </div>
 
         <a
           href="https://noukash.com"
-          className="mt-12 inline-flex h-[50px] items-center gap-2 rounded-m bg-surface-inverted px-6 font-body text-[16px] font-medium text-content-inverted transition-opacity hover:opacity-90 md:mt-16"
+          className="group mt-12 inline-flex h-[50px] items-center gap-2 rounded-m bg-surface-inverted px-6 font-body text-[16px] font-medium text-content-inverted transition-opacity hover:opacity-90 md:mt-16"
         >
           <span>Try AICareer today</span>
-          <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">
+          <span
+            aria-hidden="true"
+            className="transition-transform duration-300 group-hover:translate-x-0.5"
+          >
             →
           </span>
         </a>
