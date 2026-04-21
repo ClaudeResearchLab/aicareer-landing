@@ -42,12 +42,12 @@ export function SignupBanner() {
               aria-hidden="true"
               className="h-auto w-full"
             />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={withBase("/images/signup/sparkles.svg")}
-              alt=""
+            <object
+              data={withBase("/images/signup/sparkles.svg")}
+              type="image/svg+xml"
               aria-hidden="true"
-              className="absolute inset-0 h-full w-full"
+              tabIndex={-1}
+              className="pointer-events-none absolute inset-0 h-full w-full"
             />
           </div>
         </section>
