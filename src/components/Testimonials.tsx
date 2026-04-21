@@ -220,19 +220,6 @@ export function Testimonials() {
             <Card key={s.name} story={s} delay={i * 120} />
           ))}
         </div>
-
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 font-body text-[13px] text-content-secondary md:mt-16 md:text-[14px]">
-          <span className="inline-flex items-center gap-2 rounded-m border border-border-tertiary bg-surface-light px-3 py-2 shadow-xs-primary">
-            <span aria-hidden="true" className="text-brand-orange">★★★★★</span>
-            <span className="font-medium text-content-primary">4.8</span>
-            <span>/5 · 40k+ App Store reviews</span>
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-m border border-border-tertiary bg-surface-light px-3 py-2 shadow-xs-primary">
-            <span aria-hidden="true" className="text-brand-orange">★★★★½</span>
-            <span className="font-medium text-content-primary">4.4</span>
-            <span>/5 · 25k+ Play Store reviews</span>
-          </span>
-        </div>
       </div>
 
       <style>{`
