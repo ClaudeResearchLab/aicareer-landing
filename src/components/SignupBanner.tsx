@@ -41,7 +41,6 @@ export function SignupBanner() {
               alt=""
               aria-hidden="true"
               className="h-auto w-full"
-              style={{ filter: "invert(1)" }}
             />
           </div>
         </section>
