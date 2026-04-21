@@ -86,13 +86,24 @@ const ROWS: Row[] = [
   },
 ];
 
-function Mark({ cell, accent }: { cell: Cell; accent?: boolean }) {
+function Mark({
+  cell,
+  accent,
+  divider,
+}: {
+  cell: Cell;
+  accent?: boolean;
+  divider?: boolean;
+}) {
   return (
     <div
       className={clsx(
         "flex min-h-[44px] items-start gap-2",
         accent &&
-          "self-stretch -my-4 py-4 -mx-2 px-2 bg-highlight-green-idle/55",
+          "self-stretch -my-4 py-4 -mx-2 px-2 bg-highlight-green-idle/55 border-l border-r border-border-tertiary",
+        !accent &&
+          divider &&
+          "self-stretch -my-4 py-4 -mr-2 pr-2 border-r border-border-tertiary",
       )}
     >
       <span
@@ -161,7 +172,7 @@ export function ComparisonTable() {
           {/* Header row */}
           <div className="grid grid-cols-[minmax(160px,1.3fr)_1.2fr_1.2fr_1.2fr] items-center gap-4 border-b border-border-tertiary bg-surface-light px-5 py-5 md:px-8">
             <div />
-            <div className="flex flex-col self-stretch -my-5 py-5 -mx-2 px-2 bg-highlight-green-idle/55">
+            <div className="flex flex-col self-stretch -my-5 py-5 -mx-2 px-2 bg-highlight-green-idle/55 border-l border-r border-border-tertiary">
               <span className="font-display text-[18px] font-medium text-content-success md:text-[22px]">
                 AICareer
               </span>
@@ -169,7 +180,7 @@ export function ComparisonTable() {
                 End-to-end AI recruiter
               </span>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col self-stretch -my-5 py-5 -mr-2 pr-2 border-r border-border-tertiary">
               <span className="font-display text-[18px] font-medium text-content-primary md:text-[22px]">
                 AI tools
               </span>
@@ -209,7 +220,7 @@ export function ComparisonTable() {
                 </span>
               </div>
               <Mark cell={row.us} accent />
-              <Mark cell={row.ai} />
+              <Mark cell={row.ai} divider />
               <Mark cell={row.manual} />
             </div>
           ))}
