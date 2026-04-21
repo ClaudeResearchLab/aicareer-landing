@@ -1,88 +1,71 @@
 "use client";
 
+import type { ComponentType, SVGProps } from "react";
 import clsx from "clsx";
 import { useReveal } from "@/hooks/useReveal";
+import {
+  FileTextIcon,
+  HourglassIcon,
+  InboxIcon,
+  LayersIcon,
+  PenIcon,
+  TargetIcon,
+  ZapIcon,
+} from "./icons";
 
 type Cell = { ok: boolean; note?: string; scale?: 1 | 2 | 3 };
-type Row = { icon: string; feature: string; us: Cell; ai: Cell; manual: Cell };
+type IconCmp = ComponentType<SVGProps<SVGSVGElement>>;
+type Row = { Icon: IconCmp; feature: string; us: Cell; ai: Cell; manual: Cell };
 
 const ROWS: Row[] = [
   {
-    icon: "◉",
-    feature: "Fully integrated experience",
-    us:     { ok: true,  note: "All in one" },
+    Icon: TargetIcon,
+    feature: "Matches jobs to you",
+    us:     { ok: true,  note: "Picked for your profile, daily" },
     ai:     { ok: false },
     manual: { ok: false },
   },
   {
-    icon: "✎",
-    feature: "End-to-end application",
-    us:     { ok: true,  note: "Review, then apply with your profile" },
+    Icon: PenIcon,
+    feature: "Tailors your CV per role",
+    us:     { ok: true,  note: "Rewritten for each posting" },
+    ai:     { ok: true,  note: "Requires prompting" },
+    manual: { ok: false },
+  },
+  {
+    Icon: FileTextIcon,
+    feature: "Writes cover letters that fit",
+    us:     { ok: true,  note: "Context-aware, not generic" },
+    ai:     { ok: true,  note: "Copy-paste chat output" },
+    manual: { ok: false },
+  },
+  {
+    Icon: ZapIcon,
+    feature: "Auto-applies for you",
+    us:     { ok: true,  note: "Hands-off or one-click" },
     ai:     { ok: false },
     manual: { ok: false },
   },
   {
-    icon: "⏱",
-    feature: "Time spent per job",
-    us:     { ok: true,  note: "A few seconds", scale: 1 },
-    ai:     { ok: true,  note: "A few minutes", scale: 2 },
-    manual: { ok: false, note: "15+ minutes",   scale: 3 },
-  },
-  {
-    icon: "✦",
-    feature: "AI resume optimization",
-    us:     { ok: true,  note: "Tailored resume for each job" },
-    ai:     { ok: true,  note: "Requires manual prompting" },
-    manual: { ok: false },
-  },
-  {
-    icon: "✉︎",
-    feature: "AI-generated cover letter",
-    us:     { ok: true,  note: "Tailored letter per job" },
-    ai:     { ok: true,  note: "Prompts + copy-paste" },
-    manual: { ok: false },
-  },
-  {
-    icon: "☷",
-    feature: "Real-time job listings built in",
-    us:     { ok: true,  note: "Curated & updated daily" },
+    Icon: InboxIcon,
+    feature: "Tracks every response",
+    us:     { ok: true,  note: "One inbox, status per job" },
     ai:     { ok: false },
-    manual: { ok: true,  note: "Job boards only" },
+    manual: { ok: false, note: "Spreadsheet by hand" },
   },
   {
-    icon: "◎",
-    feature: "Smart job matching",
-    us:     { ok: true,  note: "Matches roles to your experience" },
+    Icon: HourglassIcon,
+    feature: "Time per application",
+    us:     { ok: true,  note: "Seconds",     scale: 1 },
+    ai:     { ok: true,  note: "Minutes",     scale: 2 },
+    manual: { ok: false, note: "15+ minutes", scale: 3 },
+  },
+  {
+    Icon: LayersIcon,
+    feature: "End-to-end, one tool",
+    us:     { ok: true,  note: "Find → apply → track" },
     ai:     { ok: false },
-    manual: { ok: false },
-  },
-  {
-    icon: "≡",
-    feature: "Automatic application tracking",
-    us:     { ok: true,  note: "Tracks every application & status" },
-    ai:     { ok: false },
-    manual: { ok: false },
-  },
-  {
-    icon: "✧",
-    feature: "Consistent, professional output",
-    us:     { ok: true,  note: "Polished tone & formatting" },
-    ai:     { ok: true },
-    manual: { ok: true,  note: "Manual and slow" },
-  },
-  {
-    icon: "▢",
-    feature: "Mobile + web access",
-    us:     { ok: true,  note: "Fully supported on web & mobile" },
-    ai:     { ok: true },
-    manual: { ok: true,  note: "Depends on job board" },
-  },
-  {
-    icon: "☑",
-    feature: "User control & review",
-    us:     { ok: true,  note: "Review + edit before submitting" },
-    ai:     { ok: false },
-    manual: { ok: false },
+    manual: { ok: false, note: "Five tabs open" },
   },
 ];
 
@@ -174,23 +157,23 @@ function Mark({
   return (
     <div
       className={clsx(
-        "flex min-h-[44px] items-start gap-2",
+        "flex min-h-[32px] items-start gap-2",
         accent &&
-          "self-stretch -my-4 py-4 -mx-2 px-2 bg-highlight-green-idle/55 border-l border-r border-border-tertiary",
+          "self-stretch -my-2.5 py-2.5 -mx-2 px-2 bg-highlight-green-idle/55",
         !accent &&
           divider &&
-          "self-stretch -my-4 py-4 -mr-2 pr-2 border-r border-border-tertiary",
+          "self-stretch -my-2.5 py-2.5 -mr-2 pr-2 border-r border-border-tertiary",
       )}
     >
       {cell.scale ? (
-        <TimeDots level={cell.scale} className="mt-[9px]" />
+        <TimeDots level={cell.scale} className="mt-[7px]" />
       ) : (
         <CheckCircle ok={cell.ok} accent={accent} className="mt-0.5" />
       )}
       {cell.note && (
         <span
           className={clsx(
-            "font-body text-[13px] leading-[1.4] md:text-[14px]",
+            "font-body text-[12px] leading-[1.4] md:text-[13px]",
             cell.ok ? "text-content-primary" : "text-content-secondary",
           )}
         >
@@ -258,18 +241,18 @@ export function ComparisonTable() {
             {/* Header */}
             <div
               className={clsx(
-                "grid items-stretch gap-4 border-b border-border-tertiary bg-surface-light px-5 py-6 md:px-8",
+                "grid items-stretch gap-4 border-b border-border-tertiary bg-surface-light px-5 py-5 md:px-8",
                 GRID_COLS,
               )}
             >
               <div />
-              <div className="flex flex-col justify-between self-stretch -my-6 py-6 -mx-2 px-3 bg-highlight-green-idle/55 border-l border-r border-border-tertiary">
+              <div className="flex flex-col justify-between self-stretch -my-5 py-5 -mx-2 px-3 bg-highlight-green-idle/55">
                 <span className="inline-flex self-start items-center gap-1.5 rounded-full bg-brand-green/15 px-2.5 py-0.5 font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-success">
                   <span aria-hidden="true">✦</span>
                   Recommended
                 </span>
-                <div className="mt-4 flex flex-col gap-1">
-                  <span className="font-display text-[18px] font-medium text-content-success md:text-[22px]">
+                <div className="mt-3 flex flex-col gap-0.5">
+                  <span className="font-display text-[18px] font-medium text-content-success md:text-[20px]">
                     AICareer
                   </span>
                   <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-secondary">
@@ -277,9 +260,9 @@ export function ComparisonTable() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col justify-end self-stretch -my-6 py-6 -mr-2 pr-2 border-r border-border-tertiary">
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-[18px] font-medium text-content-primary md:text-[22px]">
+              <div className="flex flex-col justify-end self-stretch -my-5 py-5 -mr-2 pr-2 border-r border-border-tertiary">
+                <div className="flex flex-col gap-0.5">
+                  <span className="font-display text-[18px] font-medium text-content-primary md:text-[20px]">
                     AI tools
                   </span>
                   <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-secondary">
@@ -287,9 +270,9 @@ export function ComparisonTable() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col justify-end self-stretch -my-6 py-6">
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-[18px] font-medium text-content-primary md:text-[22px]">
+              <div className="flex flex-col justify-end self-stretch -my-5 py-5">
+                <div className="flex flex-col gap-0.5">
+                  <span className="font-display text-[18px] font-medium text-content-primary md:text-[20px]">
                     Traditional
                   </span>
                   <span className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-content-secondary">
@@ -304,21 +287,19 @@ export function ComparisonTable() {
               <div
                 key={row.feature}
                 className={clsx(
-                  "grid items-start gap-4 px-5 py-4 transition-colors duration-200 md:px-8",
+                  "grid items-start gap-4 px-5 py-2.5 md:px-8",
                   GRID_COLS,
                   i !== ROWS.length - 1 && "border-b border-border-tertiary",
-                  i % 2 === 1 && "bg-surface-light/60",
-                  "hover:bg-surface-light",
                 )}
               >
                 <div className="flex items-start gap-3 pt-0.5">
                   <span
                     aria-hidden="true"
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-s bg-surface-light text-[14px] text-content-secondary shadow-xs-primary md:h-8 md:w-8"
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-s bg-surface-light text-content-secondary shadow-xs-primary md:h-[30px] md:w-[30px]"
                   >
-                    {row.icon}
+                    <row.Icon className="h-[14px] w-[14px]" />
                   </span>
-                  <span className="font-body text-[14px] font-medium leading-[1.35] text-content-primary md:text-[15px]">
+                  <span className="font-body text-[13px] font-medium leading-[1.35] text-content-primary md:text-[14px]">
                     {row.feature}
                   </span>
                 </div>
@@ -382,9 +363,9 @@ export function ComparisonTable() {
                         <div className="flex min-w-0 items-start gap-2.5">
                           <span
                             aria-hidden="true"
-                            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-s bg-surface-light text-[13px] text-content-secondary shadow-xs-primary"
+                            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-s bg-surface-light text-content-secondary shadow-xs-primary"
                           >
-                            {row.icon}
+                            <row.Icon className="h-[13px] w-[13px]" />
                           </span>
                           <span className="font-body text-[14px] font-medium leading-[1.3] text-content-primary">
                             {row.feature}
