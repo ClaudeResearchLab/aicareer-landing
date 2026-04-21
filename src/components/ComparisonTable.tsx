@@ -88,14 +88,20 @@ const ROWS: Row[] = [
 
 function Mark({ cell, accent }: { cell: Cell; accent?: boolean }) {
   return (
-    <div className="flex min-h-[44px] items-start gap-2">
+    <div
+      className={clsx(
+        "flex min-h-[44px] items-start gap-2",
+        accent &&
+          "self-stretch -my-4 py-4 -mx-2 px-2 bg-highlight-green-idle/55",
+      )}
+    >
       <span
         aria-hidden="true"
         className={clsx(
           "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[12px] font-medium",
           cell.ok
             ? accent
-              ? "bg-brand-coral text-surface-light"
+              ? "bg-brand-green text-surface-light"
               : "bg-highlight-green-idle text-content-success"
             : "bg-surface-dim text-content-secondary",
         )}
@@ -155,14 +161,8 @@ export function ComparisonTable() {
           {/* Header row */}
           <div className="grid grid-cols-[minmax(160px,1.3fr)_1.2fr_1.2fr_1.2fr] items-center gap-4 border-b border-border-tertiary bg-surface-light px-5 py-5 md:px-8">
             <div />
-            <div className="flex flex-col">
-              <span className="inline-flex items-center gap-2 font-display text-[18px] font-medium text-brand-coral md:text-[22px]">
-                <span
-                  aria-hidden="true"
-                  className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-coral text-[12px] font-medium text-surface-light md:h-8 md:w-8 md:text-[13px]"
-                >
-                  AI
-                </span>
+            <div className="flex flex-col self-stretch -my-5 py-5 -mx-2 px-2 bg-highlight-green-idle/55">
+              <span className="font-display text-[18px] font-medium text-content-success md:text-[22px]">
                 AICareer
               </span>
               <span className="mt-1 font-body text-[12px] text-content-secondary md:text-[13px]">
