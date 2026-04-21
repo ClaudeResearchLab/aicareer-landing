@@ -167,7 +167,9 @@ export function Testimonials() {
           )}
         >
           <h2 className="m-0 max-w-[960px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
-            Real job seekers. Real offers. Landed at top companies worldwide.
+            Real job seekers. Real offers.
+            <br />
+            Landed at top companies worldwide.
           </h2>
           <p className="mt-5 font-body text-[17px] text-content-secondary md:text-[19px]">
             From first jobs to senior moves — we do the heavy lifting.
