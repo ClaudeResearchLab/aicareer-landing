@@ -143,7 +143,7 @@ export function Showcase() {
               <h2
                 ref={title.ref}
                 className={clsx(
-                  "reveal m-0 mb-[36px] text-center font-display text-[48px] font-light leading-[1.1] text-surface-light md:text-[80px] md:leading-[96px]",
+                  "reveal m-0 mb-[36px] text-balance text-center font-display text-[48px] font-light leading-[1.1] text-surface-light md:text-[80px] md:leading-[96px]",
                   title.isVisible && "is-visible",
                 )}
               >

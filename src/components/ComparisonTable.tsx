@@ -134,8 +134,8 @@ export function ComparisonTable() {
             <span aria-hidden="true">⚖</span>
             <span>Why not just ChatGPT?</span>
           </span>
-          <h2 className="m-0 max-w-[840px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
-            AICareer vs. everything else you&rsquo;ve tried.
+          <h2 className="m-0 max-w-[840px] text-balance font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
+            AICareer vs. everything else you&rsquo;ve&nbsp;tried.
           </h2>
           <p className="mx-auto mt-6 max-w-[620px] font-body text-[16px] text-content-secondary md:text-[18px]">
             An AI chat writes a cover letter. A spreadsheet tracks what you

@@ -166,7 +166,7 @@ export function Testimonials() {
             heading.isVisible && "is-visible",
           )}
         >
-          <h2 className="m-0 max-w-[960px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
+          <h2 className="m-0 max-w-[960px] text-balance font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
             Real job seekers. Real offers.
             <br />
             Landed at top companies worldwide.

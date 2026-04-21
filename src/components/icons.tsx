@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { ReactNode, SVGProps } from "react";
 
 /**
  * Inline SVG icons extracted verbatim from https://ellipsus.com/ on
@@ -286,6 +286,201 @@ export function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
         d="M6.79 3.719C6.755 2.13 5.62.922 3.776.922S.726 2.132.726 3.719c0 1.555 1.17 2.799 2.98 2.799h.034c1.88 0 3.05-1.244 3.05-2.8Zm-.355 5.01h-5.39v16.193h5.39V8.73Zm13.231-.38c3.547 0 6.205 2.314 6.205 7.288v9.285h-5.389v-8.664c0-2.176-.78-3.66-2.73-3.66-1.49 0-2.377 1-2.766 1.967-.143.347-.178.83-.178 1.314v9.043h-5.39s.071-14.674 0-16.193h5.39v2.294c.716-1.103 1.997-2.675 4.858-2.675Z"
       />
     </svg>
+  );
+}
+
+/**
+ * Pain-chip icons. Lucide-sourced (MIT) SVG paths, inlined to avoid a
+ * dependency. All share a 24x24 viewBox, stroke=currentColor, stroke-width 1.5.
+ */
+
+function PainBase({
+  children,
+  ...props
+}: SVGProps<SVGSVGElement> & { children: ReactNode }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      {children}
+    </svg>
+  );
+}
+
+export function GhostIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <path d="M9 10h.01" />
+      <path d="M15 10h.01" />
+      <path d="M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z" />
+    </PainBase>
+  );
+}
+
+export function PhoneOffIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.4 19.4 0 0 1-3.33-2.67" />
+      <path d="M5.17 9a19.4 19.4 0 0 1-1.57-5.06A2 2 0 0 1 5.54 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9.5 10" />
+      <line x1="22" y1="2" x2="2" y2="22" />
+    </PainBase>
+  );
+}
+
+export function CalendarIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </PainBase>
+  );
+}
+
+export function CalendarXIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+      <line x1="10" y1="14" x2="14" y2="18" />
+      <line x1="14" y1="14" x2="10" y2="18" />
+    </PainBase>
+  );
+}
+
+export function FileTextIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="8" y1="13" x2="16" y2="13" />
+      <line x1="8" y1="17" x2="14" y2="17" />
+    </PainBase>
+  );
+}
+
+export function InboxIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <polyline points="22 13 16 13 14 16 10 16 8 13 2 13" />
+      <path d="M5.45 5.11 2 13v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5l-3.45-7.89A2 2 0 0 0 16.72 4H7.28a2 2 0 0 0-1.83 1.11z" />
+    </PainBase>
+  );
+}
+
+export function HourglassIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <path d="M5 22h14" />
+      <path d="M5 2h14" />
+      <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" />
+      <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" />
+    </PainBase>
+  );
+}
+
+export function LayersIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </PainBase>
+  );
+}
+
+export function ZapIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </PainBase>
+  );
+}
+
+export function KeyboardIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="M6 8h.01" />
+      <path d="M10 8h.01" />
+      <path d="M14 8h.01" />
+      <path d="M18 8h.01" />
+      <path d="M6 12h.01" />
+      <path d="M10 12h.01" />
+      <path d="M14 12h.01" />
+      <path d="M18 12h.01" />
+      <path d="M7 16h10" />
+    </PainBase>
+  );
+}
+
+export function MoonIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </PainBase>
+  );
+}
+
+export function TargetIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </PainBase>
+  );
+}
+
+export function TrendingDownIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
+      <polyline points="17 18 23 18 23 12" />
+    </PainBase>
+  );
+}
+
+export function PenIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <path d="M12 19l7-7 3 3-7 7-3-3z" />
+      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+      <path d="M2 2l7.586 7.586" />
+      <circle cx="11" cy="11" r="2" />
+    </PainBase>
+  );
+}
+
+export function BellIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+    </PainBase>
+  );
+}
+
+export function TableIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <PainBase {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <line x1="3" y1="9" x2="21" y2="9" />
+      <line x1="3" y1="15" x2="21" y2="15" />
+      <line x1="9" y1="3" x2="9" y2="21" />
+      <line x1="15" y1="3" x2="15" y2="21" />
+    </PainBase>
   );
 }
 
