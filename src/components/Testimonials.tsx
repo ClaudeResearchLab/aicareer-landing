@@ -167,10 +167,10 @@ export function Testimonials() {
           )}
         >
           <h2 className="m-0 max-w-[960px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
-            Helped thousands of careerists land jobs at top companies.
+            Real job seekers. Real offers. Landed at top companies worldwide.
           </h2>
           <p className="mt-5 font-body text-[17px] text-content-secondary md:text-[19px]">
-            From new grads to senior executives.
+            From first jobs to senior moves — we do the heavy lifting.
           </p>
         </div>
 

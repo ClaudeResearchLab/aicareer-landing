@@ -27,8 +27,8 @@ export function Counter() {
           <div className="flex flex-col items-center gap-10">
             <p className="m-0 w-full max-w-[1100px] text-center font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[80px] md:leading-[97px]">
               <span>Trusted by </span>
-              <span>50,000 </span>
-              <span>careerists. And their AI recruiter.</span>
+              <span>50,000+ </span>
+              <span>job seekers. And the AI recruiter working for them.</span>
             </p>
             <a
               href="https://write.ellipsus.com/?utm_medium=website&utm_source=home_writers-count&utm_campaign=5569_join-for-free"
