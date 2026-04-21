@@ -8,6 +8,7 @@ import { PainPoints } from "@/components/PainPoints";
 import { Showcase } from "@/components/Showcase";
 import { SignupBanner } from "@/components/SignupBanner";
 import { Statement } from "@/components/Statement";
+import { Testimonials } from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Showcase />
       <Statement />
       <Counter />
+      <Testimonials />
       <SignupBanner />
       <Footer />
     </main>
