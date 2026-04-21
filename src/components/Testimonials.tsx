@@ -3,85 +3,77 @@
 import clsx from "clsx";
 import { useReveal } from "@/hooks/useReveal";
 
-type Quote = {
+type Tag = { icon: string; label: string };
+
+type Story = {
+  status: "OFFER ACCEPTED" | "MULTIPLE INTERVIEWS";
+  quote: string;
+  tags: Tag[];
   name: string;
   role: string;
   tint: "coral" | "blue" | "green" | "purple" | "orange";
-  text: string;
+  company: { name: string; className?: string };
 };
 
-// 9 quotes split across three columns — middle column is one longer than
-// the sides so the grid breathes.
-const COLUMNS: Quote[][] = [
-  [
-    {
-      name: "Al-Hajj M.",
-      role: "Mid-career, fintech",
-      tint: "coral",
-      text: "The platform is seamless and intuitive. I feel confident I'll land my next role much faster.",
+const STORIES: Story[] = [
+  {
+    status: "OFFER ACCEPTED",
+    quote:
+      "This platform completely transformed my job search. The personalized coaching and interview prep helped me land my dream role at a top tech company.",
+    tags: [
+      { icon: "▣", label: "Barclays" },
+      { icon: "✦", label: "Finance" },
+      { icon: "➤", label: "Internship" },
+    ],
+    name: "Augustine B.",
+    role: "Operations Analyst",
+    tint: "coral",
+    company: { name: "Barclays", className: "font-display italic tracking-tight" },
+  },
+  {
+    status: "OFFER ACCEPTED",
+    quote:
+      "Accepted an offer during a brutal market. Juggling other responsibilities made the search painful — AICareer made the whole process so much easier, week over week.",
+    tags: [
+      { icon: "▣", label: "Capital One" },
+      { icon: "✦", label: "Full time" },
+    ],
+    name: "Michelle I.",
+    role: "Strategy & Analytics",
+    tint: "blue",
+    company: {
+      name: "CapitalOne",
+      className: "font-body font-semibold tracking-tight",
     },
-    {
-      name: "Kaylena R.",
-      role: "Student · first job",
-      tint: "blue",
-      text: "I get anxious opening job boards, but AICareer made the process manageable. I'm finally applying consistently.",
+  },
+  {
+    status: "MULTIPLE INTERVIEWS",
+    quote:
+      "I\u2019ve gotten some amazing interviews and I\u2019m shocked by how many I\u2019ve received since joining. Landed screens at Condé Nast, T-Mobile, and multiple AI companies I wouldn\u2019t have discovered otherwise.",
+    tags: [
+      { icon: "▣", label: "T-Mobile" },
+      { icon: "◎", label: "Multiple companies" },
+    ],
+    name: "Brooke D.",
+    role: "Active job seeker",
+    tint: "purple",
+    company: {
+      name: "·T··",
+      className: "font-body font-bold tracking-[0.3em] text-[22px]",
     },
-    {
-      name: "Jranan A.",
-      role: "New graduate",
-      tint: "green",
-      text: "Within a couple weeks I landed multiple screens. Feels unreal compared to the old copy-paste grind.",
-    },
-  ],
-  [
-    {
-      name: "Jordan S.",
-      role: "Active job seeker",
-      tint: "purple",
-      text: "Applying used to feel exhausting. With AICareer I started getting callbacks again — three in a few weeks.",
-    },
-    {
-      name: "Myra C.",
-      role: "Early-career, design",
-      tint: "orange",
-      text: "For the first time, companies actually responded. Two interview emails came through after weeks of silence.",
-    },
-    {
-      name: "Nanilish H.",
-      role: "College graduate",
-      tint: "coral",
-      text: "I applied to ~200 roles and landed a handful of interviews in days. Huge time saver, far less burnout.",
-    },
-    {
-      name: "Augustine B.",
-      role: "Operations analyst",
-      tint: "blue",
-      text: "The personalized coaching and interview prep helped me land my dream role at a top tech company.",
-    },
-  ],
-  [
-    {
-      name: "Jordynn K.",
-      role: "International student",
-      tint: "green",
-      text: "Within the first three days I had five interview requests. Applying finally feels fast — and actually works.",
-    },
-    {
-      name: "Alex W.",
-      role: "College student · new grad",
-      tint: "purple",
-      text: "From download to first interview in five days. Never going back to scrolling job boards myself.",
-    },
-    {
-      name: "Michelle I.",
-      role: "Strategy & analytics",
-      tint: "orange",
-      text: "Accepted an offer through AICareer during a brutal market. It made the process so much easier week over week.",
-    },
-  ],
+  },
 ];
 
-const TINT_RING: Record<Quote["tint"], string> = {
+const LOGOS: { label: string; className: string }[] = [
+  { label: "Meta",   className: "font-body font-black italic tracking-tight" },
+  { label: "TESLA",  className: "font-body font-semibold tracking-[0.32em]" },
+  { label: "SPACEX", className: "font-body font-bold tracking-[0.18em]" },
+  { label: "Google", className: "font-display font-medium tracking-tight" },
+  { label: "\uF8FF", className: "font-body text-[30px] leading-none" },
+  { label: "airbnb", className: "font-body font-semibold lowercase tracking-tight" },
+];
+
+const TINT_RING: Record<Story["tint"], string> = {
   coral:  "bg-highlight-coral-idle  text-brand-coral",
   blue:   "bg-highlight-blue-idle   text-brand-blue",
   green:  "bg-highlight-green-idle  text-brand-green",
@@ -99,40 +91,69 @@ function initials(name: string): string {
     .toUpperCase();
 }
 
-function Card({ quote, delay }: { quote: Quote; delay: number }) {
+function Card({ story, delay }: { story: Story; delay: number }) {
   return (
     <figure
-      className="rounded-l border border-border-tertiary bg-surface-light p-6 shadow-s-primary transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-border-secondary hover:shadow-m-primary"
+      className="flex h-full flex-col rounded-l border border-border-tertiary bg-surface-light p-7 shadow-l-primary transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-border-secondary hover:shadow-xl-primary md:p-8"
       style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
     >
-      <div className="mb-4 flex items-center gap-3">
+      <span className="mb-5 inline-block font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-content-tertiary md:text-[12px]">
+        {story.status}
+      </span>
+
+      <blockquote className="m-0 flex-1 font-display text-[20px] font-light leading-[1.4] text-content-primary md:text-[22px]">
+        &ldquo;{story.quote}&rdquo;
+      </blockquote>
+
+      <ul className="mt-6 flex flex-wrap gap-2">
+        {story.tags.map((t) => (
+          <li
+            key={t.label}
+            className="inline-flex items-center gap-1.5 rounded-full border border-border-tertiary bg-surface-primary px-3 py-1 font-body text-[12px] text-content-primary md:text-[13px]"
+          >
+            <span aria-hidden="true" className="text-content-secondary">{t.icon}</span>
+            <span>{t.label}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-7 flex items-center justify-between gap-4 border-t border-border-tertiary pt-5">
+        <figcaption className="flex items-center gap-3">
+          <span
+            aria-hidden="true"
+            className={clsx(
+              "flex h-11 w-11 items-center justify-center rounded-full font-display text-[15px] font-medium",
+              TINT_RING[story.tint],
+            )}
+          >
+            {initials(story.name)}
+          </span>
+          <span className="flex flex-col leading-tight">
+            <span className="font-body text-[15px] font-medium text-content-primary">
+              {story.name}
+            </span>
+            <span className="font-body text-[13px] text-content-secondary">
+              {story.role}
+            </span>
+          </span>
+        </figcaption>
         <span
           aria-hidden="true"
           className={clsx(
-            "flex h-10 w-10 items-center justify-center rounded-full font-display text-[15px] font-medium",
-            TINT_RING[quote.tint],
+            "shrink-0 text-[18px] text-content-tertiary md:text-[20px]",
+            story.company.className,
           )}
         >
-          {initials(quote.name)}
+          {story.company.name}
         </span>
-        <figcaption className="flex flex-col leading-tight">
-          <span className="font-body text-[15px] font-medium text-content-primary">
-            {quote.name}
-          </span>
-          <span className="font-body text-[13px] text-content-secondary">
-            {quote.role}
-          </span>
-        </figcaption>
       </div>
-      <blockquote className="m-0 font-body text-[15px] leading-[1.55] text-content-primary md:text-[16px]">
-        &ldquo;{quote.text}&rdquo;
-      </blockquote>
     </figure>
   );
 }
 
 export function Testimonials() {
   const heading = useReveal<HTMLDivElement>();
+  const logos = useReveal<HTMLDivElement>();
   const grid = useReveal<HTMLDivElement>();
 
   return (
@@ -149,42 +170,52 @@ export function Testimonials() {
             <span aria-hidden="true">♡</span>
             <span>Real results</span>
           </span>
-          <h2 className="m-0 max-w-[880px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
-            Real people. Real offers. How careerists use AICareer to land jobs
-            faster.
+          <h2 className="m-0 max-w-[960px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
+            Helped thousands of careerists land jobs at top companies.
           </h2>
+          <p className="mt-5 font-body text-[17px] text-content-secondary md:text-[19px]">
+            From new grads to senior executives.
+          </p>
         </div>
+
+        <div
+          ref={logos.ref}
+          className={clsx(
+            "reveal mt-12 flex w-full flex-wrap items-center justify-center gap-x-10 gap-y-5 md:mt-16 md:gap-x-16",
+            logos.isVisible && "is-visible",
+          )}
+          style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+        >
+          {LOGOS.map((logo) => (
+            <span
+              key={logo.label}
+              aria-hidden="true"
+              className={clsx(
+                "text-[22px] text-content-tertiary transition-colors duration-300 hover:text-content-secondary md:text-[26px]",
+                logo.className,
+              )}
+            >
+              {logo.label}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-14 h-px w-full max-w-[1100px] bg-border-tertiary md:mt-20" aria-hidden="true" />
 
         <div
           ref={grid.ref}
           className={clsx(
-            "reveal relative mt-14 w-full md:mt-20",
+            "reveal mt-14 grid w-full grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 md:gap-8",
             grid.isVisible && "is-visible",
           )}
-          style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+          style={{ "--reveal-delay": "200ms" } as React.CSSProperties}
         >
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-            {COLUMNS.map((col, ci) => (
-              <div key={ci} className="flex flex-col gap-4 md:gap-6">
-                {col.map((q, qi) => (
-                  <Card key={q.name} quote={q} delay={(ci * 120) + qi * 90} />
-                ))}
-              </div>
-            ))}
-          </div>
-
-          {/* Soft fade at top/bottom to suggest there's more than what's shown */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-surface-primary to-transparent"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-surface-primary to-transparent"
-          />
+          {STORIES.map((s, i) => (
+            <Card key={s.name} story={s} delay={i * 120} />
+          ))}
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 font-body text-[13px] text-content-secondary md:text-[14px]">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 font-body text-[13px] text-content-secondary md:mt-16 md:text-[14px]">
           <span className="inline-flex items-center gap-2 rounded-m border border-border-tertiary bg-surface-light px-3 py-2 shadow-xs-primary">
             <span aria-hidden="true" className="text-brand-orange">★★★★★</span>
             <span className="font-medium text-content-primary">4.8</span>
