@@ -157,7 +157,7 @@ export function Testimonials() {
   const grid = useReveal<HTMLDivElement>();
 
   return (
-    <section className="relative w-full overflow-hidden bg-surface-primary px-5 py-[100px] md:px-20 md:py-[160px]">
+    <section className="relative w-full overflow-hidden bg-surface-primary px-5 pt-[56px] pb-[100px] md:px-20 md:pt-[80px] md:pb-[160px]">
       <div className="mx-auto flex w-full max-w-[1312px] flex-col items-center">
         <div
           ref={heading.ref}
@@ -166,10 +166,6 @@ export function Testimonials() {
             heading.isVisible && "is-visible",
           )}
         >
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-coral/30 bg-highlight-coral-idle px-4 py-1.5 font-body text-[13px] font-medium text-brand-coral">
-            <span aria-hidden="true">♡</span>
-            <span>Real results</span>
-          </span>
           <h2 className="m-0 max-w-[960px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
             Helped thousands of careerists land jobs at top companies.
           </h2>
