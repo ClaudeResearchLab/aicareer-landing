@@ -33,7 +33,7 @@ export function PainPoints() {
   const cloud = useReveal<HTMLDivElement>();
 
   return (
-    <section className="relative w-full bg-highlight-coral-idle px-5 py-[100px] md:px-20 md:py-[160px]">
+    <section className="relative w-full bg-highlight-orange-idle px-5 py-[100px] md:px-20 md:py-[160px]">
       <div className="mx-auto flex w-full max-w-[1312px] flex-col items-center">
         <div
           ref={heading.ref}
