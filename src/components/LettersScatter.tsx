@@ -34,8 +34,8 @@ const WORDS: Word[] = [
   { id: "thrive",  text: "THRIVE",  anchor: { x: 160,  y: 400 }, rotation: -5 },
 ];
 
-const LETTER_SIZE = 15;
-const LETTER_STEP = 11;
+const LETTER_SIZE = 10;
+const LETTER_STEP = 7;
 const SCATTER_RX = 82;
 const SCATTER_RY = 38;
 
