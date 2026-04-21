@@ -186,6 +186,29 @@
 @keyframes hero-ready {
   to { opacity: 1; }
 }
+
+/* Hero body + CTA fade in while the prefix typewriter types.
+   Prefix is ~16 chars × 55ms ≈ 880ms; paragraph lands around the
+   handoff to the colored word cycle, CTA a beat later. */
+.hero-body,
+.hero-cta-fade {
+  opacity: 0;
+  animation: heroBodyFade 0.75s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.hero-body       { animation-delay: 0.75s; }
+.hero-cta-fade   { animation-delay: 1.05s; }
+@keyframes heroBodyFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-body,
+  .hero-cta-fade {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
 @keyframes heroCursorDrift {
   0%   { transform: translate(0, 0) rotate(0deg); }
   25%  { transform: translate(14px, -10px) rotate(-4deg); }

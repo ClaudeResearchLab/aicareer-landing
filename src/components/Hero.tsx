@@ -25,10 +25,10 @@ export function Hero() {
       <div className="relative w-full px-6 md:px-20">
         <div className="mx-auto flex w-full max-w-[1312px] flex-col items-center">
           <h1 className="hero-title m-0 mb-[50px] text-center font-display text-[56px] font-light leading-[1.05] text-surface-light md:text-[96px]">
-            Your dream job, <Typewriter />
+            <Typewriter />
           </h1>
 
-          <p className="m-0 mb-10 max-w-[560px] text-center font-body text-xl font-normal text-surface-light md:text-2xl">
+          <p className="hero-body m-0 mb-10 max-w-[560px] text-center font-body text-xl font-normal text-surface-light md:text-2xl">
             AICareer is the recruiter working for you 24/7. We match jobs, tailor your CV, auto-apply, and track every response. You just show up for the interview.
           </p>
 
@@ -36,7 +36,7 @@ export function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             href={CTA_HREF}
-            className="hero-cta group relative inline-flex h-[42px] items-center justify-center overflow-hidden rounded-m bg-white px-4 font-body text-[16px] font-medium text-content-primary"
+            className="hero-cta hero-cta-fade group relative inline-flex h-[42px] items-center justify-center overflow-hidden rounded-m bg-white px-4 font-body text-[16px] font-medium text-content-primary"
           >
             <span className="pointer-events-none absolute inset-0 rounded-m border border-content-primary transition-colors duration-300 group-hover:bg-content-primary" />
             <span className="relative transition-colors duration-300 group-hover:text-content-inverted">

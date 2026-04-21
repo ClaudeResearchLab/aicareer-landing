@@ -16,23 +16,45 @@ const LONGEST = WORDS.reduce((a, b) =>
   a.word.length >= b.word.length ? a : b,
 ).word;
 
+const PREFIX = "Your dream job, ";
+
+const PREFIX_TYPE_MS = 55;
+const PREFIX_HOLD_MS = 420;
 const TYPE_MS = 110;
 const ERASE_MS = 55;
 const HOLD_MS = 1600;
 const GAP_MS = 280;
 
-type Phase = "typing" | "holding" | "erasing" | "gap";
+type Phase =
+  | "prefix-typing"
+  | "prefix-hold"
+  | "typing"
+  | "holding"
+  | "erasing"
+  | "gap";
 
 export function Typewriter() {
   const [wordIndex, setWordIndex] = useState(0);
-  const [text, setText] = useState<string>(WORDS[0].word);
-  const [phase, setPhase] = useState<Phase>("holding");
+  const [prefixText, setPrefixText] = useState("");
+  const [text, setText] = useState<string>("");
+  const [phase, setPhase] = useState<Phase>("prefix-typing");
 
   useEffect(() => {
-    const word = WORDS[wordIndex].word;
     let id: number;
 
-    if (phase === "typing") {
+    if (phase === "prefix-typing") {
+      if (prefixText.length < PREFIX.length) {
+        id = window.setTimeout(
+          () => setPrefixText(PREFIX.slice(0, prefixText.length + 1)),
+          PREFIX_TYPE_MS,
+        );
+      } else {
+        id = window.setTimeout(() => setPhase("prefix-hold"), 0);
+      }
+    } else if (phase === "prefix-hold") {
+      id = window.setTimeout(() => setPhase("typing"), PREFIX_HOLD_MS);
+    } else if (phase === "typing") {
+      const word = WORDS[wordIndex].word;
       if (text.length < word.length) {
         id = window.setTimeout(
           () => setText(word.slice(0, text.length + 1)),
@@ -57,25 +79,42 @@ export function Typewriter() {
     }
 
     return () => window.clearTimeout(id);
-  }, [text, phase, wordIndex]);
+  }, [text, prefixText, phase, wordIndex]);
 
+  const inPrefixPhase = phase === "prefix-typing" || phase === "prefix-hold";
+  const displayPrefix = inPrefixPhase ? prefixText : PREFIX;
   const color = WORDS[wordIndex].color;
 
   return (
     <span className="typewriter">
-      <span className="typewriter-ghost" aria-hidden="true">
-        {LONGEST}
-      </span>
-      <span
-        className="typewriter-text"
-        style={{ color }}
-        aria-live="polite"
-      >
-        {text}
-        <span className="typewriter-caret" aria-hidden="true" />
-      </span>
+      <span className="typewriter-prefix">{displayPrefix}</span>
+      {inPrefixPhase ? (
+        <span className="typewriter-caret typewriter-caret-prefix" aria-hidden="true" />
+      ) : (
+        <span className="typewriter-word">
+          <span className="typewriter-ghost" aria-hidden="true">
+            {LONGEST}
+          </span>
+          <span
+            className="typewriter-text"
+            style={{ color }}
+            aria-live="polite"
+          >
+            {text}
+            <span className="typewriter-caret" aria-hidden="true" />
+          </span>
+        </span>
+      )}
       <style>{`
         .typewriter {
+          display: inline;
+          white-space: normal;
+        }
+        .typewriter-prefix {
+          display: inline;
+          white-space: pre;
+        }
+        .typewriter-word {
           position: relative;
           display: inline-block;
           vertical-align: baseline;
@@ -102,6 +141,9 @@ export function Typewriter() {
           background: currentColor;
           transform: translateY(0.06em);
           animation: typewriter-caret-blink 1.05s steps(2, start) infinite;
+        }
+        .typewriter-caret-prefix {
+          color: #FBFBF9;
         }
         @keyframes typewriter-caret-blink {
           0%, 49%   { opacity: 1; }
