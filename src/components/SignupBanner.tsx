@@ -9,10 +9,7 @@ export function SignupBanner() {
   const decor = useReveal<HTMLDivElement>();
 
   return (
-    <div
-      className="relative w-full px-5 pt-[72px] md:px-20 md:pt-[144px]"
-      style={{ backgroundColor: "#202022" }}
-    >
+    <div className="relative w-full bg-surface-inverted-2 px-5 pt-[72px] md:px-20 md:pt-[144px]">
       <div className="relative mx-auto w-full max-w-[1312px]">
         <section className="relative">
           <div
@@ -43,7 +40,7 @@ export function SignupBanner() {
               src={withBase("/images/signup/decor.png")}
               alt=""
               aria-hidden="true"
-              className="ml-auto block h-auto w-[70%] max-w-[1000px]"
+              className="h-auto w-full"
             />
           </div>
         </section>
