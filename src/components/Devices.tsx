@@ -12,8 +12,8 @@ export function Devices() {
             <Image
               src={withBase("/images/devices/desktop.png")}
               alt="AICareer on Desktop"
-              width={970}
-              height={776}
+              width={1287}
+              height={814}
               priority
               className="h-auto w-auto max-w-full"
             />
