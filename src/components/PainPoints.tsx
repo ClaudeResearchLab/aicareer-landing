@@ -6,26 +6,24 @@ import { useReveal } from "@/hooks/useReveal";
 type Pain = { icon: string; text: string; tilt: number };
 
 const PAINS: Pain[] = [
-  { icon: "✉︎",  text: "Forgot to follow up?",            tilt: -1.5 },
-  { icon: "⌛",  text: "Hours applying, no replies?",      tilt:  1.2 },
-  { icon: "↻",  text: "Reapplying by accident?",          tilt: -0.8 },
-  { icon: "⌨",  text: "Re-entering the same info again?", tilt:  1.8 },
-  { icon: "☷",  text: "Lost track of applications?",      tilt: -1.2 },
-  { icon: "✎",  text: "Copy-pasting cover letters?",      tilt:  0.9 },
-  { icon: "◔",  text: "No idea if anyone saw it?",        tilt: -1.6 },
-  { icon: "✦",  text: "Rewriting resumes nonstop?",       tilt:  1.4 },
-  { icon: "❒",  text: "Duplicate apps on every site?",    tilt: -0.7 },
-  { icon: "∞",  text: "Endless scrolling for jobs?",      tilt:  1.7 },
-  { icon: "☺",  text: 'Writing "Dear Hiring Manager" again?', tilt: -1.3 },
-  { icon: "⚑",  text: "Job hunt feels like a job?",       tilt:  0.6 },
-  { icon: "☰",  text: "Manual spreadsheet tracking?",     tilt: -1.9 },
-  { icon: "◎",  text: "Others landing faster than you?",  tilt:  1.0 },
-  { icon: "♨",  text: "Feeling burnt out?",               tilt: -0.5 },
-  { icon: "◫",  text: "Job search feels endless?",        tilt:  1.3 },
-  { icon: "◉",  text: "Too many job sites to check?",     tilt: -1.1 },
-  { icon: "☁",  text: "Can't remember last app?",         tilt:  0.8 },
-  { icon: "◐",  text: "Tired of job board spam?",         tilt: -1.4 },
-  { icon: "≡",  text: "Stuck using spreadsheets?",        tilt:  1.6 },
+  { icon: "◔",  text: "Ghosted for the fifth time?",              tilt: -1.5 },
+  { icon: "◎",  text: "Zero callbacks this month?",               tilt:  1.2 },
+  { icon: "⚑",  text: "Another Sunday lost to applications?",     tilt: -0.8 },
+  { icon: "✦",  text: "CV at version 38?",                        tilt:  1.8 },
+  { icon: "✉︎",  text: "Inbox full of \u201Cunfortunately\u201D?", tilt: -1.2 },
+  { icon: "⌛",  text: "Still waiting after 3 weeks?",             tilt:  0.9 },
+  { icon: "❒",  text: "40 tabs open, 0 submitted?",               tilt: -1.6 },
+  { icon: "☰",  text: "Interview calendar: empty again?",         tilt:  1.4 },
+  { icon: "↻",  text: "Auto-rejected in 8 seconds?",              tilt: -0.7 },
+  { icon: "⌨",  text: "Re-typing the same info on 10 sites?",     tilt:  1.7 },
+  { icon: "✎",  text: "Tailored all night, heard nothing?",       tilt: -1.3 },
+  { icon: "∞",  text: "Missed the perfect role overnight?",       tilt:  0.6 },
+  { icon: "☁",  text: "Forgot which company ghosted you?",        tilt: -1.9 },
+  { icon: "◫",  text: "Three rounds, then silence?",              tilt:  1.0 },
+  { icon: "☺",  text: "\u201CDear Hiring Manager\u201D for the 50th time?", tilt: -0.5 },
+  { icon: "♨",  text: "Weekend gone, no offers?",                 tilt:  1.3 },
+  { icon: "◐",  text: "Job alerts piling up, 0 relevant?",        tilt: -1.1 },
+  { icon: "≡",  text: "Spreadsheet row 147 and counting?",        tilt:  0.8 },
 ];
 
 export function PainPoints() {
@@ -42,13 +40,8 @@ export function PainPoints() {
             heading.isVisible && "is-visible",
           )}
         >
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-coral/30 bg-highlight-coral-idle px-4 py-1.5 font-body text-[13px] font-medium text-brand-coral">
-            <span aria-hidden="true">✦</span>
-            <span>Sound familiar?</span>
-          </span>
           <h2 className="m-0 max-w-[840px] font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[72px] md:leading-[1.05]">
-            Tired of endless job searching? Here&rsquo;s what&rsquo;s really
-            holding you back.
+            Job hunting shouldn&rsquo;t feel like this.
           </h2>
         </div>
 
