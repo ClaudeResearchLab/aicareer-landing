@@ -216,7 +216,7 @@ export function ComparisonTable() {
         </div>
 
         <a
-          href="https://account.ellipsus.com/sign-up"
+          href="https://aircareer.com"
           className="mt-12 inline-flex h-[50px] items-center gap-2 rounded-m bg-surface-inverted px-6 font-body text-[16px] font-medium text-content-inverted transition-opacity hover:opacity-90 md:mt-16"
         >
           <span>Try AICareer today</span>

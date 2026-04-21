@@ -2,8 +2,7 @@ import { HeroCursorLeftIcon, HeroCursorRightIcon } from "./icons";
 import { LettersScatter } from "./LettersScatter";
 import { Typewriter } from "./Typewriter";
 
-const CTA_HREF =
-  "https://write.ellipsus.com?utm_medium=website&utm_source=home_hero&utm_campaign=5569_join-for-free";
+const CTA_HREF = "https://aircareer.com";
 
 export function Hero() {
   return (

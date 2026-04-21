@@ -54,7 +54,7 @@ const manrope = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ellipsus.com"),
+  metadataBase: new URL("https://aircareer.com"),
   title: "AICareer | Your AI career copilot",
   description:
     "Your AI recruiter. Swipe through jobs matched to your skills. AICareer tailors your CV, auto-applies, and tracks every response. Sign up for free.",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   manifest: "/seo/site.webmanifest",
   openGraph: {
     type: "website",
-    url: "https://ellipsus.com/",
+    url: "https://aircareer.com/",
     title: "AICareer | Your AI career copilot",
     description:
       "Your AI recruiter. Swipe through jobs matched to your skills. AICareer tailors your CV, auto-applies, and tracks every response. Sign up for free.",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     images: ["/seo/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://ellipsus.com/",
+    canonical: "https://aircareer.com/",
   },
 };
 

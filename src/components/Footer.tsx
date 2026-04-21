@@ -14,29 +14,29 @@ import {
 } from "@/components/icons";
 
 const LINKS = [
-  { label: "What's new", href: "https://ellipsus.com/blog/whats-new" },
-  { label: "Blog", href: "https://ellipsus.com/blog" },
-  { label: "Help center", href: "https://help.ellipsus.com/" },
-  { label: "Who we are", href: "https://ellipsus.com/about" },
-  { label: "Our stance on AI", href: "https://ellipsus.com/generative-ai" },
-  { label: "Merch store", href: "https://merch.ellipsus.com/" },
-  { label: "Status", href: "https://status.ellipsus.com/" },
-  { label: "Contact us", href: "mailto:support@ellipsus.com" },
+  { label: "What's new", href: "https://aircareer.com" },
+  { label: "Blog", href: "https://aircareer.com" },
+  { label: "Help center", href: "https://aircareer.com" },
+  { label: "Who we are", href: "https://aircareer.com" },
+  { label: "Our stance on AI", href: "https://aircareer.com" },
+  { label: "Merch store", href: "https://aircareer.com" },
+  { label: "Status", href: "https://aircareer.com" },
+  { label: "Contact us", href: "mailto:support@aircareer.com" },
 ];
 
 const SOCIALS = [
-  { label: "Email", href: "mailto:dotdotdot@ellipsus.com", Icon: MailIcon },
-  { label: "Tumblr", href: "https://www.tumblr.com/ellipsus-writes", Icon: TumblrIcon },
-  { label: "Discord", href: "http://discord.gg/ellipsus", Icon: DiscordIcon },
-  { label: "Instagram", href: "https://www.instagram.com/ellipsuswrites/", Icon: InstagramIcon },
-  { label: "TikTok", href: "https://www.tiktok.com/@ellipsus_writes", Icon: TikTokIcon },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/ellipsus", Icon: LinkedInIcon },
-  { label: "Bluesky", href: "https://bsky.app/profile/ellipsus.com", Icon: BlueskyIcon },
+  { label: "Email", href: "mailto:support@aircareer.com", Icon: MailIcon },
+  { label: "Tumblr", href: "https://aircareer.com", Icon: TumblrIcon },
+  { label: "Discord", href: "https://aircareer.com", Icon: DiscordIcon },
+  { label: "Instagram", href: "https://aircareer.com", Icon: InstagramIcon },
+  { label: "TikTok", href: "https://aircareer.com", Icon: TikTokIcon },
+  { label: "LinkedIn", href: "https://aircareer.com", Icon: LinkedInIcon },
+  { label: "Bluesky", href: "https://aircareer.com", Icon: BlueskyIcon },
 ];
 
 const LEGAL = [
-  { label: "Terms of service", href: "https://ellipsus.com/terms-of-service" },
-  { label: "Privacy policy", href: "https://ellipsus.com/privacy-policy" },
+  { label: "Terms of service", href: "https://aircareer.com" },
+  { label: "Privacy policy", href: "https://aircareer.com" },
 ];
 
 export function Footer() {
@@ -59,7 +59,7 @@ export function Footer() {
             <EllipsusLogo className="mb-10 h-[37px] w-[164px] text-surface-light" />
             <ul className="m-0 mb-[74px] w-[122px] list-none p-0">
               {LINKS.map((l) => (
-                <li key={l.href} className="h-[39px] font-body text-[16px] leading-[19px]">
+                <li key={l.label} className="h-[39px] font-body text-[16px] leading-[19px]">
                   <a href={l.href} className="transition-opacity hover:opacity-70">
                     {l.label}
                   </a>
@@ -68,7 +68,7 @@ export function Footer() {
             </ul>
             <ul className="m-0 flex w-full list-none gap-3 p-0 md:w-[240px]">
               {SOCIALS.map(({ label, href, Icon }) => (
-                <li key={href} className="h-[29px] w-6">
+                <li key={label} className="h-[29px] w-6">
                   <a
                     href={href}
                     aria-label={label}
@@ -111,7 +111,7 @@ export function Footer() {
             >
               <ul className="m-0 flex list-none gap-[72px] p-0 font-body text-[16px] leading-[19px] text-surface-light">
                 {LEGAL.map((l) => (
-                  <li key={l.href}>
+                  <li key={l.label}>
                     <a href={l.href} className="transition-opacity hover:opacity-70">
                       {l.label}
                     </a>
