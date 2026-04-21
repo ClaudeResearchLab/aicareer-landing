@@ -181,23 +181,29 @@ export function Testimonials() {
         <div
           ref={logos.ref}
           className={clsx(
-            "reveal mt-12 flex w-full flex-wrap items-center justify-center gap-x-10 gap-y-5 md:mt-16 md:gap-x-16",
+            "reveal logo-marquee mt-12 w-full md:mt-16",
             logos.isVisible && "is-visible",
           )}
           style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         >
-          {LOGOS.map((logo) => (
-            <span
-              key={logo.label}
-              aria-hidden="true"
-              className={clsx(
-                "text-[22px] text-content-tertiary transition-colors duration-300 hover:text-content-secondary md:text-[26px]",
-                logo.className,
-              )}
-            >
-              {logo.label}
-            </span>
-          ))}
+          <div className="logo-marquee-track">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="logo-marquee-row" aria-hidden={copy === 1}>
+                {LOGOS.map((logo) => (
+                  <span
+                    key={`${copy}-${logo.label}`}
+                    aria-hidden="true"
+                    className={clsx(
+                      "text-[22px] text-content-tertiary transition-colors duration-300 hover:text-content-secondary md:text-[26px]",
+                      logo.className,
+                    )}
+                  >
+                    {logo.label}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-14 h-px w-full max-w-[1100px] bg-border-tertiary md:mt-20" aria-hidden="true" />
@@ -228,6 +234,54 @@ export function Testimonials() {
           </span>
         </div>
       </div>
+
+      <style>{`
+        .logo-marquee {
+          overflow: hidden;
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            black 10%,
+            black 90%,
+            transparent 100%
+          );
+                  mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            black 10%,
+            black 90%,
+            transparent 100%
+          );
+        }
+        .logo-marquee-track {
+          display: flex;
+          width: max-content;
+          animation: logoMarquee 32s linear infinite;
+        }
+        .logo-marquee-row {
+          display: flex;
+          align-items: center;
+          gap: 64px;
+          padding-right: 64px;
+          flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+          .logo-marquee-row {
+            gap: 96px;
+            padding-right: 96px;
+          }
+        }
+        .logo-marquee:hover .logo-marquee-track {
+          animation-play-state: paused;
+        }
+        @keyframes logoMarquee {
+          from { transform: translate3d(0, 0, 0); }
+          to   { transform: translate3d(-50%, 0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .logo-marquee-track { animation: none; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -16,10 +16,10 @@ export default function Home() {
       <Navigation />
       <Hero />
       <Devices />
+      <Testimonials />
       <Introduction />
       <PainPoints />
       <Showcase />
-      <Testimonials />
       <ComparisonTable />
       <Counter />
       <SignupBanner />
