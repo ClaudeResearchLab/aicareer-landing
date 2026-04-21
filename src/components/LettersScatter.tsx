@@ -9,29 +9,29 @@ type Word = {
   rotation: number;
 };
 
-// The 12 words form a single coherent sentence when all gather at once:
-// "YOUR NEXT CHAPTER BEGINS / HERE · APPLY / GET · OFFERED / HIRED AND FINALLY THRIVE".
-// Read border-wise (top L→R, left col top→bottom, right col top→bottom, bottom L→R)
-// it scans as "Your next chapter begins here, apply, get offered, hired, and
-// finally thrive." No stray "preposition" glyphs — every letter belongs to a word.
+// The 12 words flow clockwise around the hero, tracing a full sentence:
+// "Your next chapter begins here, apply, get offered, hired, and finally thrive."
+// Reading path: top L→R, right T→B, bottom R→L, left B→T.
 const WORDS: Word[] = [
-  // Top band (above the title)
-  { id: "your",    text: "YOUR",    anchor: { x: 250,  y: 200 }, rotation: -5 },
-  { id: "next",    text: "NEXT",    anchor: { x: 580,  y: 170 }, rotation:  3 },
-  { id: "chapter", text: "CHAPTER", anchor: { x: 920,  y: 185 }, rotation: -3 },
+  // Top band — L→R: "your next chapter begins"
+  { id: "your",    text: "YOUR",    anchor: { x: 280,  y: 200 }, rotation: -5 },
+  { id: "next",    text: "NEXT",    anchor: { x: 600,  y: 170 }, rotation:  3 },
+  { id: "chapter", text: "CHAPTER", anchor: { x: 940,  y: 185 }, rotation: -3 },
   { id: "begins",  text: "BEGINS",  anchor: { x: 1260, y: 215 }, rotation:  5 },
 
-  // Left & right columns (flanking the hero text)
-  { id: "here",    text: "HERE",    anchor: { x: 160,  y: 390 }, rotation:  6 },
-  { id: "get",     text: "GET",     anchor: { x: 1340, y: 380 }, rotation: -5 },
-  { id: "apply",   text: "APPLY",   anchor: { x: 170,  y: 570 }, rotation: -4 },
-  { id: "offered", text: "OFFERED", anchor: { x: 1330, y: 570 }, rotation:  4 },
+  // Right column — T→B: "here, apply"
+  { id: "here",    text: "HERE",    anchor: { x: 1360, y: 400 }, rotation:  6 },
+  { id: "apply",   text: "APPLY",   anchor: { x: 1360, y: 600 }, rotation: -4 },
 
-  // Bottom band
-  { id: "hired",   text: "HIRED",   anchor: { x: 265,  y: 820 }, rotation:  3 },
-  { id: "and",     text: "AND",     anchor: { x: 600,  y: 840 }, rotation: -3 },
-  { id: "finally", text: "FINALLY", anchor: { x: 940,  y: 825 }, rotation:  2 },
-  { id: "thrive",  text: "THRIVE",  anchor: { x: 1260, y: 810 }, rotation: -5 },
+  // Bottom band — R→L: "get offered hired and"
+  { id: "get",     text: "GET",     anchor: { x: 1280, y: 820 }, rotation: -5 },
+  { id: "offered", text: "OFFERED", anchor: { x: 960,  y: 830 }, rotation:  4 },
+  { id: "hired",   text: "HIRED",   anchor: { x: 620,  y: 820 }, rotation:  3 },
+  { id: "and",     text: "AND",     anchor: { x: 290,  y: 835 }, rotation: -3 },
+
+  // Left column — B→T: "finally thrive"
+  { id: "finally", text: "FINALLY", anchor: { x: 160,  y: 600 }, rotation:  2 },
+  { id: "thrive",  text: "THRIVE",  anchor: { x: 160,  y: 400 }, rotation: -5 },
 ];
 
 const LETTER_SIZE = 15;
