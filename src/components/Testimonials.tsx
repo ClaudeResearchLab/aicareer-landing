@@ -167,8 +167,8 @@ export function Testimonials() {
           )}
         >
           <h2 className="m-0 max-w-[960px] text-balance font-display text-[40px] font-light leading-[1.1] text-content-primary md:text-[64px] md:leading-[1.05]">
-            Real job seekers. Real{" "}
-            <em className="not-italic text-brand-coral">offers</em>.
+            Real <em className="not-italic text-brand-blue">job</em> seekers.
+            Real <em className="not-italic text-brand-coral">offers</em>.
             <br />
             Landed at top{" "}
             <em className="not-italic text-brand-green">companies</em>{" "}
