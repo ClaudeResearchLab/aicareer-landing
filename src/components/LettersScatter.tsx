@@ -122,6 +122,7 @@ export function LettersScatter({ className }: { className?: string }) {
           transition:
             translate 1s cubic-bezier(0.19, 1, 0.22, 1),
             rotate 0.85s cubic-bezier(0.19, 1, 0.22, 1),
+            transform 0.7s cubic-bezier(0.19, 1, 0.22, 1),
             fill-opacity 0.45s ease;
           fill: #FBFBF9;
           font-family: var(--font-display);
@@ -134,12 +135,17 @@ export function LettersScatter({ className }: { className?: string }) {
         }
         .ls-word-letter { pointer-events: all; cursor: default; }
 
-        /* Active word — letters travel to target, fully opaque. */
+        /* Active word — letters travel to target, fully opaque. Killing the
+           float animation and zeroing transform is critical: letterFloat
+           uses transform: translate()+rotate() which would otherwise freeze
+           at a random keyframe and stack on top of the assembled position,
+           making letters land at slightly staggered heights/angles. */
         .ls-word[data-active="true"] .ls-letter {
+          animation: none;
+          transform: none;
           translate: var(--dx) var(--dy);
           rotate: var(--rot-target);
           fill-opacity: 0.95;
-          animation-play-state: paused;
         }
         /* Dim everything else when any word is active. */
         .ls-root[data-any-active="true"] .ls-letter {
@@ -151,10 +157,11 @@ export function LettersScatter({ className }: { className?: string }) {
 
         /* Hovering the hero CTA gathers the whole motivating sentence at once. */
         .hero-scatter-root:has(.hero-cta:hover) .ls-word-letter {
+          animation: none;
+          transform: none;
           translate: var(--dx) var(--dy);
           rotate: var(--rot-target);
           fill-opacity: 0.95;
-          animation-play-state: paused;
         }
 
         @media (prefers-reduced-motion: reduce) {
