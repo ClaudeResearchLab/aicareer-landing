@@ -1,3 +1,4 @@
+import { ComparisonTable } from "@/components/ComparisonTable";
 import { Counter } from "@/components/Counter";
 import { Devices } from "@/components/Devices";
 import { Footer } from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
       <PainPoints />
       <Showcase />
       <Statement />
+      <ComparisonTable />
       <Counter />
       <Testimonials />
       <SignupBanner />
