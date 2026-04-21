@@ -37,12 +37,12 @@ const ENTRIES: Entry[] = [
   },
   {
     label: "Resources",
-    href: "https://aircareer.com",
+    href: "https://noukash.com",
     external: true,
     subItems: [
       { label: "Blog", href: "/blog" },
-      { label: "Help center", href: "https://aircareer.com", external: true },
-      { label: "Merch", href: "https://aircareer.com", external: true },
+      { label: "Help center", href: "https://noukash.com", external: true },
+      { label: "Merch", href: "https://noukash.com", external: true },
     ],
     previewImage: {
       src: "/images/nav/sub-card-4.png",
@@ -155,13 +155,13 @@ export function Navigation() {
       <div className="flex items-center gap-2">
         <div className="hidden md:flex items-center gap-2">
           <a
-            href="https://aircareer.com"
+            href="https://noukash.com"
             className="relative inline-flex items-center justify-center h-[42px] px-4 rounded-m text-[16px] font-medium text-content-primary font-body border border-content-primary transition-colors hover:bg-content-primary hover:text-content-inverted"
           >
             Log in
           </a>
           <a
-            href="https://aircareer.com"
+            href="https://noukash.com"
             className="relative inline-flex items-center justify-center h-[42px] px-4 rounded-m text-[16px] font-medium text-content-inverted font-body bg-surface-inverted transition-opacity hover:opacity-90"
           >
             Sign up

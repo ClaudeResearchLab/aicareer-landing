@@ -125,10 +125,11 @@ export function PainPoints() {
           position: relative;
           display: inline-block;
           transform-style: preserve-3d;
-          transition: transform 0.6s cubic-bezier(0.6, 0.04, 0.3, 1.02);
+          transition: transform 0.6s cubic-bezier(0.6, 0.04, 0.3, 1.02) 0s;
         }
         .pain-chip:hover .pain-chip-flipper {
           transform: rotateY(180deg);
+          transition-delay: 0.3s;
         }
 
         .pain-chip-face {
@@ -162,6 +163,32 @@ export function PainPoints() {
           color: var(--color-brand-coral);
           box-shadow: var(--shadow-m-primary);
         }
+
+        /* Text strike-through — wipes in before the flip, retracts after the flip-back. */
+        .pain-chip-front > span:last-child {
+          position: relative;
+        }
+        .pain-chip-front > span:last-child::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 55%;
+          height: 1.5px;
+          background: var(--color-brand-coral);
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1) 0.6s;
+          pointer-events: none;
+        }
+        .pain-chip:hover .pain-chip-front > span:last-child::after {
+          transform: scaleX(1);
+          transition-delay: 0s;
+        }
+
+        /* Phone-off diagonal line: visible on the front (problem state),
+           the back face hides it so the icon reads as "we answer". */
+        .pain-chip-back .pain-phone-strike { display: none; }
 
         .pain-chip-back {
           position: absolute;
@@ -307,65 +334,66 @@ export function PainPoints() {
           50%      { opacity: 0.45; }
         }
 
-        /* ── Hover rules — animations only fire on the BACK face,
-             delayed so they play once the flip has past 90°. ────── */
+        /* ── Hover rules — animations fire on the BACK face only, delayed
+             until the flip (300ms wait + 600ms flip) is past its midpoint
+             (≈ 600ms from hover-start) so the icon plays in full view. ── */
         .pain-chip:hover .pain-chip-back .pain-icon-ghost {
-          animation: painAnimGhost 700ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimGhost 700ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-phone {
-          animation: painAnimPhone 450ms linear 350ms;
+          animation: painAnimPhone 450ms linear 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-calendar {
-          animation: painAnimWobble 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimWobble 420ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-paper {
-          animation: painAnimFlipY 500ms cubic-bezier(0.65, 0, 0.35, 1) 350ms;
+          animation: painAnimFlipY 500ms cubic-bezier(0.65, 0, 0.35, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-inbox {
-          animation: painAnimLift 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimLift 420ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-hourglass {
-          animation: painAnimFlipX 480ms cubic-bezier(0.65, 0, 0.35, 1) 350ms;
+          animation: painAnimFlipX 480ms cubic-bezier(0.65, 0, 0.35, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-layers .pain-layer-top {
-          animation: painAnimLayerTop 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimLayerTop 420ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-layers .pain-layer-mid {
-          animation: painAnimLayerMid 420ms cubic-bezier(0.19, 1, 0.22, 1) 390ms;
+          animation: painAnimLayerMid 420ms cubic-bezier(0.19, 1, 0.22, 1) 690ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-calX .pain-xmark {
-          animation: painAnimXPulse 440ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimXPulse 440ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-zap {
-          animation: painAnimZap 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimZap 420ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-1 { animation: painAnimKey 260ms ease-out 350ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-2 { animation: painAnimKey 260ms ease-out 390ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-3 { animation: painAnimKey 260ms ease-out 430ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-4 { animation: painAnimKey 260ms ease-out 470ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-5 { animation: painAnimKey 260ms ease-out 410ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-6 { animation: painAnimKey 260ms ease-out 450ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-7 { animation: painAnimKey 260ms ease-out 490ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-8 { animation: painAnimKey 260ms ease-out 530ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-1 { animation: painAnimKey 260ms ease-out 650ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-2 { animation: painAnimKey 260ms ease-out 690ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-3 { animation: painAnimKey 260ms ease-out 730ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-4 { animation: painAnimKey 260ms ease-out 770ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-5 { animation: painAnimKey 260ms ease-out 710ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-6 { animation: painAnimKey 260ms ease-out 750ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-7 { animation: painAnimKey 260ms ease-out 790ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-8 { animation: painAnimKey 260ms ease-out 830ms; }
         .pain-chip:hover .pain-chip-back .pain-icon-moon {
-          animation: painAnimMoon 500ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimMoon 500ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
-        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-3 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 350ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-2 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 420ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-1 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 490ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-3 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 650ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-2 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 720ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-1 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 790ms; }
         .pain-chip:hover .pain-chip-back .pain-icon-trend {
-          animation: painAnimFall 500ms cubic-bezier(0.55, 0.1, 0.35, 1) 350ms;
+          animation: painAnimFall 500ms cubic-bezier(0.55, 0.1, 0.35, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-pen {
-          animation: painAnimScribble 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+          animation: painAnimScribble 420ms cubic-bezier(0.19, 1, 0.22, 1) 650ms;
         }
         .pain-chip:hover .pain-chip-back .pain-icon-bell {
-          animation: painAnimBell 480ms cubic-bezier(0.36, 0, 0.66, 1) 350ms;
+          animation: painAnimBell 480ms cubic-bezier(0.36, 0, 0.66, 1) 650ms;
           transform-origin: 50% 20%;
         }
-        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-1 { animation: painAnimCell 300ms ease-out 350ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-2 { animation: painAnimCell 300ms ease-out 460ms; }
-        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-3 { animation: painAnimCell 300ms ease-out 570ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-1 { animation: painAnimCell 300ms ease-out 650ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-2 { animation: painAnimCell 300ms ease-out 760ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-3 { animation: painAnimCell 300ms ease-out 870ms; }
 
         @media (prefers-reduced-motion: reduce) {
           .pain-chip { animation: none; }

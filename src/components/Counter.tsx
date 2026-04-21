@@ -83,7 +83,7 @@ export function Counter() {
               Trusted by <AnimatedCount active={reveal.isVisible} />+ job&nbsp;seekers. And we&rsquo;ve got their&nbsp;backs.
             </p>
             <a
-              href="https://aircareer.com"
+              href="https://noukash.com"
               className="inline-flex h-[42px] items-center rounded-[12px] bg-surface-inverted px-4 font-body text-[16px] font-medium leading-[18px] text-white transition-opacity hover:opacity-80"
             >
               Join for free

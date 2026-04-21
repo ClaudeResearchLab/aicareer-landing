@@ -20,7 +20,7 @@ export function SignupBanner() {
               Your next offer, effortlessly.
             </h3>
             <a
-              href="https://aircareer.com"
+              href="https://noukash.com"
               className="relative inline-flex h-[42px] items-center rounded-[12px] bg-white px-4 font-body text-[16px] font-medium leading-[18px] text-content-primary transition-opacity hover:opacity-80"
             >
               Sign up, it&rsquo;s free

@@ -2,7 +2,7 @@ import { HeroCursorLeftIcon, HeroCursorRightIcon } from "./icons";
 import { LettersScatter } from "./LettersScatter";
 import { Typewriter } from "./Typewriter";
 
-const CTA_HREF = "https://aircareer.com";
+const CTA_HREF = "https://noukash.com";
 
 export function Hero() {
   return (

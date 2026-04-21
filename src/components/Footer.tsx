@@ -14,29 +14,29 @@ import {
 } from "@/components/icons";
 
 const LINKS = [
-  { label: "What's new", href: "https://aircareer.com" },
-  { label: "Blog", href: "https://aircareer.com" },
-  { label: "Help center", href: "https://aircareer.com" },
-  { label: "Who we are", href: "https://aircareer.com" },
-  { label: "Our stance on AI", href: "https://aircareer.com" },
-  { label: "Merch store", href: "https://aircareer.com" },
-  { label: "Status", href: "https://aircareer.com" },
-  { label: "Contact us", href: "mailto:support@aircareer.com" },
+  { label: "What's new", href: "https://noukash.com" },
+  { label: "Blog", href: "https://noukash.com" },
+  { label: "Help center", href: "https://noukash.com" },
+  { label: "Who we are", href: "https://noukash.com" },
+  { label: "Our stance on AI", href: "https://noukash.com" },
+  { label: "Merch store", href: "https://noukash.com" },
+  { label: "Status", href: "https://noukash.com" },
+  { label: "Contact us", href: "mailto:support@noukash.com" },
 ];
 
 const SOCIALS = [
-  { label: "Email", href: "mailto:support@aircareer.com", Icon: MailIcon },
-  { label: "Tumblr", href: "https://aircareer.com", Icon: TumblrIcon },
-  { label: "Discord", href: "https://aircareer.com", Icon: DiscordIcon },
-  { label: "Instagram", href: "https://aircareer.com", Icon: InstagramIcon },
-  { label: "TikTok", href: "https://aircareer.com", Icon: TikTokIcon },
-  { label: "LinkedIn", href: "https://aircareer.com", Icon: LinkedInIcon },
-  { label: "Bluesky", href: "https://aircareer.com", Icon: BlueskyIcon },
+  { label: "Email", href: "mailto:support@noukash.com", Icon: MailIcon },
+  { label: "Tumblr", href: "https://noukash.com", Icon: TumblrIcon },
+  { label: "Discord", href: "https://noukash.com", Icon: DiscordIcon },
+  { label: "Instagram", href: "https://noukash.com", Icon: InstagramIcon },
+  { label: "TikTok", href: "https://noukash.com", Icon: TikTokIcon },
+  { label: "LinkedIn", href: "https://noukash.com", Icon: LinkedInIcon },
+  { label: "Bluesky", href: "https://noukash.com", Icon: BlueskyIcon },
 ];
 
 const LEGAL = [
-  { label: "Terms of service", href: "https://aircareer.com" },
-  { label: "Privacy policy", href: "https://aircareer.com" },
+  { label: "Terms of service", href: "https://noukash.com" },
+  { label: "Privacy policy", href: "https://noukash.com" },
 ];
 
 export function Footer() {
