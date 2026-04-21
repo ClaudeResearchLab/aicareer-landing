@@ -1,5 +1,6 @@
 import { HeroCursorLeftIcon, HeroCursorRightIcon } from "./icons";
 import { LettersScatter } from "./LettersScatter";
+import { Typewriter } from "./Typewriter";
 
 const CTA_HREF =
   "https://write.ellipsus.com?utm_medium=website&utm_source=home_hero&utm_campaign=5569_join-for-free";
@@ -24,7 +25,7 @@ export function Hero() {
       <div className="relative w-full px-6 md:px-20">
         <div className="mx-auto flex w-full max-w-[1312px] flex-col items-center">
           <h1 className="hero-title m-0 mb-[50px] text-center font-display text-[56px] font-light leading-[1.05] text-surface-light md:text-[96px]">
-            Your dream job, found.
+            Your dream job, <Typewriter />
           </h1>
 
           <p className="m-0 mb-10 max-w-[520px] text-center font-body text-xl font-normal text-surface-light md:text-2xl">
