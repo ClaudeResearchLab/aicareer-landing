@@ -30,14 +30,14 @@ export function SignupBanner() {
           <div
             ref={decor.ref}
             className={clsx(
-              "reveal pointer-events-none relative -mt-[120px] md:-mt-[240px]",
+              "reveal pointer-events-none -mt-[120px] md:-mt-[240px]",
               decor.isVisible && "is-visible",
             )}
             style={{ "--reveal-delay": "150ms" } as React.CSSProperties}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={withBase("/images/signup/decor.png")}
+              src={withBase("/images/signup/decor.svg")}
               alt=""
               aria-hidden="true"
               className="h-auto w-full"
