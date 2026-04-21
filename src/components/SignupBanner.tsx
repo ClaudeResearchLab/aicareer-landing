@@ -40,8 +40,7 @@ export function SignupBanner() {
               src={withBase("/images/signup/decor.png")}
               alt=""
               aria-hidden="true"
-              className="h-auto w-full"
-              style={{ filter: "invert(1)" }}
+              className="h-auto w-full mix-blend-multiply"
             />
           </div>
         </section>
