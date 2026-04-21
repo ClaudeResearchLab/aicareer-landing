@@ -23,27 +23,27 @@ import {
 } from "./icons";
 
 type IconCmp = ComponentType<SVGProps<SVGSVGElement>>;
-type Pain = { Icon: IconCmp; text: string; tilt: number; anim: string };
+type Pain = { Icon: IconCmp; text: string; fix: string; tilt: number; anim: string };
 
 const PAINS: Pain[] = [
-  { Icon: GhostIcon,         text: "Ghosted for the fifth time?",                    tilt: -1.5, anim: "ghost" },
-  { Icon: PhoneOffIcon,      text: "Zero callbacks this month?",                     tilt:  1.2, anim: "phone" },
-  { Icon: CalendarIcon,      text: "Another Sunday lost to applications?",           tilt: -0.8, anim: "calendar" },
-  { Icon: FileTextIcon,      text: "CV at version 38?",                              tilt:  1.8, anim: "paper" },
-  { Icon: InboxIcon,         text: "Inbox full of \u201Cunfortunately\u201D?",       tilt: -1.2, anim: "inbox" },
-  { Icon: HourglassIcon,     text: "Still waiting after 3 weeks?",                   tilt:  0.9, anim: "hourglass" },
-  { Icon: LayersIcon,        text: "40 tabs open, 0 submitted?",                     tilt: -1.6, anim: "layers" },
-  { Icon: CalendarXIcon,     text: "Interview calendar: empty again?",               tilt:  1.4, anim: "calX" },
-  { Icon: ZapIcon,           text: "Auto-rejected in 8 seconds?",                    tilt: -0.7, anim: "zap" },
-  { Icon: KeyboardIcon,      text: "Re-typing the same info on 10 sites?",           tilt:  1.7, anim: "keyboard" },
-  { Icon: MoonIcon,          text: "Tailored all night, heard nothing?",             tilt: -1.3, anim: "moon" },
-  { Icon: TargetIcon,        text: "Missed the perfect role overnight?",             tilt:  0.6, anim: "target" },
-  { Icon: GhostIcon,         text: "Forgot which company ghosted you?",              tilt: -1.9, anim: "ghost" },
-  { Icon: TrendingDownIcon,  text: "Three rounds, then silence?",                    tilt:  1.0, anim: "trend" },
-  { Icon: PenIcon,           text: "\u201CDear Hiring Manager\u201D for the 50th time?", tilt: -0.5, anim: "pen" },
-  { Icon: CalendarIcon,      text: "Weekend gone, no offers?",                       tilt:  1.3, anim: "calendar" },
-  { Icon: BellIcon,          text: "Job alerts piling up, 0 relevant?",              tilt: -1.1, anim: "bell" },
-  { Icon: TableIcon,         text: "Spreadsheet row 147 and counting?",              tilt:  0.8, anim: "table" },
+  { Icon: GhostIcon,         text: "Ghosted for the fifth time?",                    fix: "We follow up \u2014 always.",       tilt: -1.5, anim: "ghost" },
+  { Icon: PhoneOffIcon,      text: "Zero callbacks this month?",                     fix: "We chase every recruiter.",         tilt:  1.2, anim: "phone" },
+  { Icon: CalendarIcon,      text: "Another Sunday lost to applications?",           fix: "You rest. We apply.",               tilt: -0.8, anim: "calendar" },
+  { Icon: FileTextIcon,      text: "CV at version 38?",                              fix: "Tuned per job.",                    tilt:  1.8, anim: "paper" },
+  { Icon: InboxIcon,         text: "Inbox full of \u201Cunfortunately\u201D?",       fix: "Only \u201Cyes\u201D lands here.",  tilt: -1.2, anim: "inbox" },
+  { Icon: HourglassIcon,     text: "Still waiting after 3 weeks?",                   fix: "We nudge for you.",                 tilt:  0.9, anim: "hourglass" },
+  { Icon: LayersIcon,        text: "40 tabs open, 0 submitted?",                     fix: "All jobs, one tab.",                tilt: -1.6, anim: "layers" },
+  { Icon: CalendarXIcon,     text: "Interview calendar: empty again?",               fix: "Interviews, booked.",               tilt:  1.4, anim: "calX" },
+  { Icon: ZapIcon,           text: "Auto-rejected in 8 seconds?",                    fix: "Keyword-perfect, always.",          tilt: -0.7, anim: "zap" },
+  { Icon: KeyboardIcon,      text: "Re-typing the same info on 10 sites?",           fix: "One profile. Every site.",          tilt:  1.7, anim: "keyboard" },
+  { Icon: MoonIcon,          text: "Tailored all night, heard nothing?",             fix: "We tailor. You sleep.",             tilt: -1.3, anim: "moon" },
+  { Icon: TargetIcon,        text: "Missed the perfect role overnight?",             fix: "We watch 24/7.",                    tilt:  0.6, anim: "target" },
+  { Icon: GhostIcon,         text: "Forgot which company ghosted you?",              fix: "Every thread, tracked.",            tilt: -1.9, anim: "ghost" },
+  { Icon: TrendingDownIcon,  text: "Three rounds, then silence?",                    fix: "We chase every round.",             tilt:  1.0, anim: "trend" },
+  { Icon: PenIcon,           text: "\u201CDear Hiring Manager\u201D for the 50th time?", fix: "Personal, every time.",         tilt: -0.5, anim: "pen" },
+  { Icon: CalendarIcon,      text: "Weekend gone, no offers?",                       fix: "Offers by Monday.",                 tilt:  1.3, anim: "calendar" },
+  { Icon: BellIcon,          text: "Job alerts piling up, 0 relevant?",              fix: "Only real matches.",                tilt: -1.1, anim: "bell" },
+  { Icon: TableIcon,         text: "Spreadsheet row 147 and counting?",              fix: "Zero spreadsheets. Ever.",          tilt:  0.8, anim: "table" },
 ];
 
 export function PainPoints() {
@@ -78,19 +78,22 @@ export function PainPoints() {
             return (
               <span
                 key={`${p.anim}-${i}`}
-                className="pain-chip inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-tertiary bg-surface-light px-4 py-2 font-body text-[14px] font-normal text-content-primary shadow-xs-primary transition-[transform,box-shadow,border-color] duration-300 hover:border-brand-coral hover:text-brand-coral hover:shadow-m-primary md:text-[15px]"
+                className="pain-chip"
                 style={{
                   transform: `rotate(${p.tilt}deg)`,
                   animationDelay: `${(i % 7) * 180}ms`,
                 }}
               >
-                <Icon
-                  className={clsx(
-                    "pain-icon h-[16px] w-[16px] shrink-0 text-content-secondary md:h-[17px] md:w-[17px]",
-                    `pain-icon-${p.anim}`,
-                  )}
-                />
-                <span className="pain-text">{p.text}</span>
+                <span className="pain-chip-flipper">
+                  <span className="pain-chip-face pain-chip-front">
+                    <Icon className="pain-front-icon" />
+                    <span>{p.text}</span>
+                  </span>
+                  <span className="pain-chip-face pain-chip-back">
+                    <Icon className={clsx("pain-icon", `pain-icon-${p.anim}`)} />
+                    <span>{p.fix}</span>
+                  </span>
+                </span>
               </span>
             );
           })}
@@ -104,48 +107,106 @@ export function PainPoints() {
       </div>
 
       <style>{`
-        /* ── Idle float ──────────────────────────────────────────── */
+        /* ── Chip shell (flip container) ─────────────────────────── */
         @keyframes painFloat {
           0%, 100% { translate: 0 0; }
           50%      { translate: 0 -3px; }
         }
         .pain-chip {
+          display: inline-block;
+          cursor: pointer;
+          perspective: 900px;
           animation: painFloat 6s ease-in-out infinite;
           will-change: transform, translate;
         }
         .pain-chip:hover { animation-play-state: paused; }
 
-        /* ── Text + strike-through ───────────────────────────────── */
-        .pain-text {
+        .pain-chip-flipper {
           position: relative;
           display: inline-block;
+          transform-style: preserve-3d;
+          transition: transform 0.6s cubic-bezier(0.6, 0.04, 0.3, 1.02);
         }
-        .pain-text::after {
-          content: "";
-          position: absolute;
-          left: -2px;
-          right: -2px;
-          top: 50%;
-          height: 1.5px;
-          background: #EB5B55;
-          transform: scaleX(0);
-          transform-origin: left center;
-          transition: transform 0.32s cubic-bezier(0.19, 1, 0.22, 1);
-          border-radius: 2px;
-          pointer-events: none;
-        }
-        .pain-chip:hover .pain-text::after {
-          transform: scaleX(1);
-          transition-delay: 0.08s;
+        .pain-chip:hover .pain-chip-flipper {
+          transform: rotateY(180deg);
         }
 
-        /* ── Per-icon host rules ─────────────────────────────────── */
+        .pain-chip-face {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 16px;
+          border-radius: 9999px;
+          font-family: var(--font-body);
+          font-size: 14px;
+          line-height: 1.3;
+          font-weight: 400;
+          white-space: nowrap;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          box-shadow: var(--shadow-xs-primary);
+        }
+        @media (min-width: 768px) {
+          .pain-chip-face { font-size: 15px; }
+        }
+
+        .pain-chip-front {
+          position: relative;
+          background: var(--color-surface-light);
+          border: 1px solid var(--color-border-tertiary);
+          color: var(--color-content-primary);
+          transition: box-shadow 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .pain-chip:hover .pain-chip-front {
+          border-color: var(--color-brand-coral);
+          color: var(--color-brand-coral);
+          box-shadow: var(--shadow-m-primary);
+        }
+
+        .pain-chip-back {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          transform: rotateY(180deg);
+          background: var(--color-highlight-green-idle);
+          border: 1px solid var(--color-brand-green);
+          color: var(--color-content-success);
+          box-shadow: var(--shadow-m-primary);
+        }
+
+        .pain-front-icon {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+          color: var(--color-content-secondary);
+          transition: color 0.3s;
+        }
+        .pain-chip:hover .pain-front-icon {
+          color: var(--color-brand-coral);
+        }
+        @media (min-width: 768px) {
+          .pain-front-icon { width: 17px; height: 17px; }
+        }
+        .pain-chip-back .pain-icon {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+          color: var(--color-content-success);
+        }
+        @media (min-width: 768px) {
+          .pain-chip-back .pain-icon { width: 17px; height: 17px; }
+        }
+
+        /* ── Icon animation plumbing (transform-box so SVG children
+             rotate around their own center, not the viewBox origin) ── */
         .pain-icon {
           transform-box: fill-box;
           transform-origin: center;
           will-change: transform, opacity;
         }
-        /* Children need fill-box too for path-level animations */
         .pain-icon .pain-xmark,
         .pain-icon .pain-layer-top,
         .pain-icon .pain-layer-mid,
@@ -156,18 +217,13 @@ export function PainPoints() {
           transform-origin: center;
         }
 
-        /* GHOST — float up + fade, then settle */
+        /* ── Per-icon keyframes ──────────────────────────────────── */
         @keyframes painAnimGhost {
           0%   { transform: translateY(0) scale(1); opacity: 1; }
           45%  { transform: translateY(-4px) scale(1.03); opacity: 0.55; }
           70%  { transform: translateY(-2px) scale(1); opacity: 0.85; }
           100% { transform: translateY(0) scale(1); opacity: 1; }
         }
-        .pain-chip:hover .pain-icon-ghost {
-          animation: painAnimGhost 700ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* PHONE — vibrate shake */
         @keyframes painAnimPhone {
           0%, 100% { transform: translate(0, 0) rotate(0deg); }
           10% { transform: translate(-1px, 0) rotate(-6deg); }
@@ -177,50 +233,25 @@ export function PainPoints() {
           70% { transform: translate(-1px, 0) rotate(-2deg); }
           85% { transform: translate(1px, 0) rotate(2deg); }
         }
-        .pain-chip:hover .pain-icon-phone {
-          animation: painAnimPhone 450ms linear;
-        }
-
-        /* CALENDAR — gentle wobble */
         @keyframes painAnimWobble {
           0%, 100% { transform: rotate(0deg); }
           25% { transform: rotate(-8deg); }
           55% { transform: rotate(6deg); }
           80% { transform: rotate(-3deg); }
         }
-        .pain-chip:hover .pain-icon-calendar {
-          animation: painAnimWobble 420ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* PAPER — flip on Y */
         @keyframes painAnimFlipY {
           0%   { transform: perspective(200px) rotateY(0deg); }
           50%  { transform: perspective(200px) rotateY(180deg); }
           100% { transform: perspective(200px) rotateY(360deg); }
         }
-        .pain-chip:hover .pain-icon-paper {
-          animation: painAnimFlipY 500ms cubic-bezier(0.65, 0, 0.35, 1);
-        }
-
-        /* INBOX — lift as if opening */
         @keyframes painAnimLift {
           0%, 100% { transform: translateY(0) scale(1); }
           50%      { transform: translateY(-2.5px) scale(1.08); }
         }
-        .pain-chip:hover .pain-icon-inbox {
-          animation: painAnimLift 420ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* HOURGLASS — flip on X (turning it over) */
         @keyframes painAnimFlipX {
           0%   { transform: perspective(200px) rotateX(0deg); }
           100% { transform: perspective(200px) rotateX(360deg); }
         }
-        .pain-chip:hover .pain-icon-hourglass {
-          animation: painAnimFlipX 480ms cubic-bezier(0.65, 0, 0.35, 1);
-        }
-
-        /* LAYERS — top/mid layers shift up, bottom stays */
         @keyframes painAnimLayerTop {
           0%, 100% { transform: translateY(0); }
           50%      { transform: translateY(-1.5px); }
@@ -229,77 +260,34 @@ export function PainPoints() {
           0%, 100% { transform: translateY(0); }
           50%      { transform: translateY(-0.75px); }
         }
-        .pain-chip:hover .pain-icon-layers .pain-layer-top {
-          animation: painAnimLayerTop 420ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .pain-chip:hover .pain-icon-layers .pain-layer-mid {
-          animation: painAnimLayerMid 420ms cubic-bezier(0.19, 1, 0.22, 1) 40ms;
-        }
-
-        /* CAL-X — X pulses */
         @keyframes painAnimXPulse {
           0%, 100% { transform: scale(1); opacity: 1; }
           40%      { transform: scale(1.3); opacity: 0.75; }
           70%      { transform: scale(0.95); opacity: 1; }
         }
-        .pain-chip:hover .pain-icon-calX .pain-xmark {
-          animation: painAnimXPulse 440ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* ZAP — flash scale + brightness */
         @keyframes painAnimZap {
           0%, 100% { transform: scale(1); filter: brightness(1); }
           30%      { transform: scale(1.18) rotate(-4deg); filter: brightness(1.4); }
           55%      { transform: scale(0.96) rotate(3deg); filter: brightness(1.1); }
           80%      { transform: scale(1.05); filter: brightness(1.2); }
         }
-        .pain-chip:hover .pain-icon-zap {
-          animation: painAnimZap 420ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* KEYBOARD — staggered key-press dots */
         @keyframes painAnimKey {
           0%, 100% { transform: translateY(0); opacity: 1; }
           50%      { transform: translateY(-1.4px); opacity: 0.5; }
         }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-1 { animation: painAnimKey 260ms ease-out 0ms; }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-2 { animation: painAnimKey 260ms ease-out 40ms; }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-3 { animation: painAnimKey 260ms ease-out 80ms; }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-4 { animation: painAnimKey 260ms ease-out 120ms; }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-5 { animation: painAnimKey 260ms ease-out 60ms; }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-6 { animation: painAnimKey 260ms ease-out 100ms; }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-7 { animation: painAnimKey 260ms ease-out 140ms; }
-        .pain-chip:hover .pain-icon-keyboard .pain-key-8 { animation: painAnimKey 260ms ease-out 180ms; }
-
-        /* MOON — slow tilt with glow */
         @keyframes painAnimMoon {
-          0%, 100% { transform: rotate(0deg); filter: drop-shadow(0 0 0 rgba(235, 91, 85, 0)); }
-          50%      { transform: rotate(-22deg); filter: drop-shadow(0 0 2px rgba(235, 91, 85, 0.6)); }
+          0%, 100% { transform: rotate(0deg); filter: drop-shadow(0 0 0 rgba(5, 123, 64, 0)); }
+          50%      { transform: rotate(-22deg); filter: drop-shadow(0 0 2px rgba(5, 123, 64, 0.55)); }
         }
-        .pain-chip:hover .pain-icon-moon {
-          animation: painAnimMoon 500ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* TARGET — concentric rings pulse outward */
         @keyframes painAnimRing {
           0%, 100% { transform: scale(1); opacity: 1; }
           50%      { transform: scale(1.18); opacity: 0.55; }
         }
-        .pain-chip:hover .pain-icon-target .pain-ring-3 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 0ms; }
-        .pain-chip:hover .pain-icon-target .pain-ring-2 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 70ms; }
-        .pain-chip:hover .pain-icon-target .pain-ring-1 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 140ms; }
-
-        /* TREND-DOWN — the line falls */
         @keyframes painAnimFall {
           0%   { transform: translateY(0); }
           60%  { transform: translateY(2.5px); }
           100% { transform: translateY(0); }
         }
-        .pain-chip:hover .pain-icon-trend {
-          animation: painAnimFall 500ms cubic-bezier(0.55, 0.1, 0.35, 1);
-        }
-
-        /* PEN — scribble (translate + rotate jitter) */
         @keyframes painAnimScribble {
           0%, 100% { transform: translate(0, 0) rotate(0deg); }
           20% { transform: translate(-1px, 1px) rotate(-6deg); }
@@ -307,11 +295,6 @@ export function PainPoints() {
           60% { transform: translate(-1px, 0.5px) rotate(-4deg); }
           80% { transform: translate(1px, -1px) rotate(3deg); }
         }
-        .pain-chip:hover .pain-icon-pen {
-          animation: painAnimScribble 420ms cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* BELL — ring shake */
         @keyframes painAnimBell {
           0%, 100% { transform: rotate(0deg); }
           15% { transform: rotate(-18deg); }
@@ -319,28 +302,78 @@ export function PainPoints() {
           55% { transform: rotate(-10deg); }
           75% { transform: rotate(6deg); }
         }
-        .pain-chip:hover .pain-icon-bell {
-          animation: painAnimBell 480ms cubic-bezier(0.36, 0, 0.66, 1);
-          transform-origin: 50% 20%;
-        }
-
-        /* TABLE — staggered cell flashes */
         @keyframes painAnimCell {
           0%, 100% { opacity: 0; }
           50%      { opacity: 0.45; }
         }
-        .pain-chip:hover .pain-icon-table .pain-cell-1 { animation: painAnimCell 300ms ease-out 0ms; }
-        .pain-chip:hover .pain-icon-table .pain-cell-2 { animation: painAnimCell 300ms ease-out 110ms; }
-        .pain-chip:hover .pain-icon-table .pain-cell-3 { animation: painAnimCell 300ms ease-out 220ms; }
+
+        /* ── Hover rules — animations only fire on the BACK face,
+             delayed so they play once the flip has past 90°. ────── */
+        .pain-chip:hover .pain-chip-back .pain-icon-ghost {
+          animation: painAnimGhost 700ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-phone {
+          animation: painAnimPhone 450ms linear 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-calendar {
+          animation: painAnimWobble 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-paper {
+          animation: painAnimFlipY 500ms cubic-bezier(0.65, 0, 0.35, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-inbox {
+          animation: painAnimLift 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-hourglass {
+          animation: painAnimFlipX 480ms cubic-bezier(0.65, 0, 0.35, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-layers .pain-layer-top {
+          animation: painAnimLayerTop 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-layers .pain-layer-mid {
+          animation: painAnimLayerMid 420ms cubic-bezier(0.19, 1, 0.22, 1) 390ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-calX .pain-xmark {
+          animation: painAnimXPulse 440ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-zap {
+          animation: painAnimZap 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-1 { animation: painAnimKey 260ms ease-out 350ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-2 { animation: painAnimKey 260ms ease-out 390ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-3 { animation: painAnimKey 260ms ease-out 430ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-4 { animation: painAnimKey 260ms ease-out 470ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-5 { animation: painAnimKey 260ms ease-out 410ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-6 { animation: painAnimKey 260ms ease-out 450ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-7 { animation: painAnimKey 260ms ease-out 490ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-keyboard .pain-key-8 { animation: painAnimKey 260ms ease-out 530ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-moon {
+          animation: painAnimMoon 500ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-3 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 350ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-2 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 420ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-target .pain-ring-1 { animation: painAnimRing 360ms cubic-bezier(0.19, 1, 0.22, 1) 490ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-trend {
+          animation: painAnimFall 500ms cubic-bezier(0.55, 0.1, 0.35, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-pen {
+          animation: painAnimScribble 420ms cubic-bezier(0.19, 1, 0.22, 1) 350ms;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-bell {
+          animation: painAnimBell 480ms cubic-bezier(0.36, 0, 0.66, 1) 350ms;
+          transform-origin: 50% 20%;
+        }
+        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-1 { animation: painAnimCell 300ms ease-out 350ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-2 { animation: painAnimCell 300ms ease-out 460ms; }
+        .pain-chip:hover .pain-chip-back .pain-icon-table .pain-cell-3 { animation: painAnimCell 300ms ease-out 570ms; }
 
         @media (prefers-reduced-motion: reduce) {
           .pain-chip { animation: none; }
+          .pain-chip-flipper { transition: none; }
+          .pain-chip:hover .pain-chip-flipper { transform: none; }
           .pain-icon,
           .pain-icon * {
             animation: none !important;
-          }
-          .pain-text::after {
-            transition: none;
           }
         }
       `}</style>
