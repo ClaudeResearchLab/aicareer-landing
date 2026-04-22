@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { withBase } from "@/lib/basePath";
 import {
-  EllipsusLogo,
+  AICareerLogo,
   NavChevronIcon,
   NavHighlightIcon,
   NavSubUnderlineIcon,
@@ -97,7 +97,7 @@ export function Navigation() {
   return (
     <nav className="sticky top-0 z-[200] h-[64px] md:h-[74px] bg-surface-primary flex items-center justify-between px-6 md:px-16">
       <NavLink href="/" className="flex items-center text-content-primary">
-        <EllipsusLogo className="h-7 md:h-[33px] w-auto" />
+        <AICareerLogo className="h-7 md:h-[33px] w-auto" />
         <span className="sr-only">AICareer</span>
       </NavLink>
 

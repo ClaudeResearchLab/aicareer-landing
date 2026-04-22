@@ -30,3 +30,7 @@ Thumbs.db
 .claude/*
 !.claude/skills/
 .claude/settings.local.json
+
+# Temporary screenshots + QA artifacts
+.tmp-*
+.agents/

@@ -3,9 +3,9 @@
 import clsx from "clsx";
 import { useReveal } from "@/hooks/useReveal";
 import {
+  AICareerLogo,
   BlueskyIcon,
   DiscordIcon,
-  EllipsusLogo,
   InstagramIcon,
   LinkedInIcon,
   MailIcon,
@@ -56,7 +56,7 @@ export function Footer() {
               left.isVisible && "is-visible",
             )}
           >
-            <EllipsusLogo className="mb-10 h-[37px] w-[164px] text-surface-light" />
+            <AICareerLogo className="mb-10 h-[37px] w-auto text-surface-light" />
             <ul className="m-0 mb-[74px] w-[122px] list-none p-0">
               {LINKS.map((l) => (
                 <li key={l.label} className="h-[39px] font-body text-[16px] leading-[19px]">

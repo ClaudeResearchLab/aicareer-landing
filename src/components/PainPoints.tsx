@@ -51,8 +51,17 @@ export function PainPoints() {
   const cloud = useReveal<HTMLDivElement>();
 
   return (
-    <section className="relative w-full bg-[#F6EFE9] px-5 pt-[120px] pb-[100px] md:px-20 md:pt-[50px] md:pb-[160px]">
-      <div className="mx-auto flex w-full max-w-[1312px] flex-col items-center">
+    <section className="relative isolate w-full overflow-hidden px-5 pt-[120px] pb-[100px] md:px-20 md:pt-[50px] md:pb-[160px]">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#f5f6f1_0%,#eff2ea_58%,#ecefe7_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[220px] bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.82),rgba(255,255,255,0)_72%)] md:h-[280px]"
+      />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-[1312px] flex-col items-center">
         <div
           ref={heading.ref}
           className={clsx(

@@ -12,10 +12,10 @@ export function Devices() {
             <Image
               src={withBase("/images/devices/desktop.png")}
               alt="AICareer on Desktop"
-              width={1207}
-              height={735}
+              width={1167}
+              height={788}
               priority
-              className="h-auto w-auto max-w-full"
+              className="h-auto w-[1167px] max-w-none"
             />
           </div>
         </div>
